@@ -12,10 +12,11 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
 # neonaop
 
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
-[![Build Status](https://travis-ci.org/mbjoseph/neonaop.svg?branch=master)](https://travis-ci.org/mbjoseph/neonaop)
+[![Build Status](https://travis-ci.org/earthlab/neonaop.svg?branch=master)](https://travis-ci.org/earthlab/neonaop)
 
 The goal of neonaop is to make data from the NEON AOP easier to use. 
 The National Ecological Observatory Network (NEON) collects hyperspectral 
