@@ -1,8 +1,7 @@
 # Generate fake h5 file containing a smaller subset of NEON AOP data
 #
 # This is an internal script that is used to create inst/extdata/ex.h5,
-# which is used for examples and also for testing. This is just one band from
-# the NEON AOP hyperspectral data.
+# which is used for examples and also for testing.
 #
 # First, get a real NEON AOP file for SJER locally via
 # neonUtilities::byTileAOP(dpID="DP3.30006.001", site="SJER", year="2017",
