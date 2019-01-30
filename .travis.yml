@@ -1,0 +1,36 @@
+language: r
+
+r:
+  - release
+  - oldrel
+  - devel
+
+sudo: required
+dist: trusty
+cache:
+  - packages
+  - ccache
+
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
+    packages:
+      - libproj-dev
+      - libgeos-dev
+      - libgdal-dev
+      - libhdf5-dev
+
+r_packages:
+  - rgdal
+
+r_github_packages:
+  - jimhester/covr
+
+after_success:
+- Rscript -e 'library(covr);codecov()'
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
