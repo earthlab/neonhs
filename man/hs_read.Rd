@@ -24,3 +24,15 @@ Observation Platform, and returns a Raster* object.
 You can learn more the NEON AOP hyperspectral imagery at:
 https://www.neonscience.org/data-collection/airborne-remote-sensing
 }
+\examples{
+library(raster)
+path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+
+# read the full spatial extent of a file
+r <- hs_read(path_to_file, bands = 1:4)
+
+# read a subset of a file based on a cropping extent
+extent_to_read <- extent(c(257000, 257020, 4111980, 4112100))
+subset_r <- hs_read(path_to_file, bands = 1:4, crop = extent_to_read)
+
+}

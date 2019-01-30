@@ -11,6 +11,17 @@
 #' @param crop Optional extent object to use in cropping
 #' @return Raster* object containing hyperspectral data
 #'
+#' @examples
+#' library(raster)
+#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+#'
+#' # read the full spatial extent of a file
+#' r <- hs_read(path_to_file, bands = 1:4)
+#'
+#' # read a subset of a file based on a cropping extent
+#' extent_to_read <- extent(c(257000, 257020, 4111980, 4112100))
+#' subset_r <- hs_read(path_to_file, bands = 1:4, crop = extent_to_read)
+#'
 #' @export
 hs_read <- function(filename, bands, crop = FALSE){
   stopifnot(all(bands > 0))
@@ -34,19 +45,6 @@ hs_read <- function(filename, bands, crop = FALSE){
   r
 }
 
-# library(raster)
-# library(viridis)
-# r <- hs_read('data/NEON_D17_SJER_DP3_257000_4111000_reflectance.h5',
-#              bands = 1:3)
-# r
-# plot(r, col = cividis(100))
-# ce <- raster::extent(c(257500, 259000, 4111500, 4112100))
-# cr <- hs_read('data/NEON_D17_SJER_DP3_257000_4111000_reflectance.h5',
-#               bands = c(1, 150, 300),
-#               crop = ce)
-# plot(cr, add = TRUE, col = viridis(100))
-
-
 
 get_dims <- function(filename) {
   file_h5 <- hdf5r::H5File$new(filename, mode = 'r+')
@@ -56,9 +54,6 @@ get_dims <- function(filename) {
   file_h5$close_all()
   dims
 }
-
-# get_dims('data/NEON_D17_SJER_DP3_257000_4111000_reflectance.h5')
-
 
 
 hs_extent <- function(filename){
@@ -101,9 +96,6 @@ get_wavelength <- function(filename, bands) {
   layer_names
 }
 
-# get_wavelength('data/NEON_D17_SJER_DP3_257000_4111000_reflectance.h5',
-#                bands = 1:10)
-
 
 read_hs_values <- function(filename, index){
   bands <- index[[1]]
@@ -131,12 +123,6 @@ read_hs_values <- function(filename, index){
   names(r) <- get_wavelength(filename, bands)
   r
 }
-
-# library(raster)
-# library(viridis)
-# b <- read_hs_values('data/NEON_D17_SJER_DP3_257000_4111000_reflectance.h5',
-#              list(c(1, 30, 50), 1:100, 1:100))
-# plot(b, col = viridis(100))
 
 
 calculate_index_extent <- function(clip_extent, h5_extent){
