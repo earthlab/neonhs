@@ -3,7 +3,6 @@ dist: xenial
 
 r:
   - release
-  - oldrel
   - devel
 
 cache:
