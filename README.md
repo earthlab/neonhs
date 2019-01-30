@@ -3,6 +3,8 @@
 
 # neonaop
 
+![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+
 The goal of neonaop is to make data from the NEON AOP easier to use. The
 National Ecological Observatory Network (NEON) collects hyperspectral
 imagery via its Aerial Observation Platform (AOP) at a 1 meter spatial
@@ -19,7 +21,8 @@ devtools::install_github('earthlab/neonaop')
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to read some bands from L3
+hyperspectral reflectance data as a multi-layer raster:
 
 ``` r
 library(neonaop)
