@@ -29,7 +29,7 @@ hs_read <- function(filename, bands, crop = FALSE){
   use_h5_extent <- isFALSE(crop)
   if (use_h5_extent) {
     out_extent <- h5_extent
-    dims <- get_dims(filename)
+    dims <- hs_dims(filename)
     index <- list(bands, seq_len(dims[2]), seq_len(dims[3]))
   } else {
     index_extent <- calculate_index_extent(clip_extent = crop,
@@ -46,7 +46,24 @@ hs_read <- function(filename, bands, crop = FALSE){
 }
 
 
-get_dims <- function(filename) {
+#' Get the dimensions of a hyperspectral reflectance HDF5 file
+#' 
+#' The `hs_dims` function returns the dimensions of reflectance data contained
+#' within an HDF5 file for NEON's L3 hyperspectral reflectance data. 
+#' In most cases, these dimensions will be 426 X 1000 X 1000: 426 bands and 
+#' images that are 1000m by 1000m in their spatial extent at 1 meter resolution.
+#' 
+#' @param filename Path to an .h5 file containing hyperspectral data (char)
+#' 
+#' @return an integer vector of length 3 containing the number of bands, 
+#' number of x pixels, and number of y pixels. 
+#' 
+#' @examples
+#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+#' hs_dims(path_to_file)
+#' 
+#' @export
+hs_dims <- function(filename) {
   file_h5 <- hdf5r::H5File$new(filename, mode = 'r+')
   site <- file_h5$ls()$name
   reflectance <- file_h5[[paste0(site, '/Reflectance/Reflectance_Data')]]
@@ -56,13 +73,25 @@ get_dims <- function(filename) {
 }
 
 
+#' Get the spatial extent of a hyperspectral image
+#' 
+#' @param filename Path to an .h5 file containing hyperspectral data (char)
+#' 
+#' @return a raster::extent object that contains the min and max x and y 
+#' coordinates of a hyperspectral image
+#' 
+#' @examples
+#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+#' hs_extent(path_to_file)
+#' 
+#' @export
 hs_extent <- function(filename){
   file_h5 <- hdf5r::H5File$new(filename, mode = 'r+')
   site <- file_h5$ls()$name
   path <- paste0(site, '/Reflectance/Metadata/Coordinate_System/Map_Info')
   map_info <- unlist(strsplit(file_h5[[path]]$read(), ','))
   file_h5$close_all()
-  dims <- get_dims(filename)
+  dims <- hs_dims(filename)
   xy_resolution <- as.numeric(c(map_info[2], map_info[3]))
   xmin <- as.numeric(map_info[4])
   xmax <- xmin + dims[2] * xy_resolution[1]
@@ -70,8 +99,6 @@ hs_extent <- function(filename){
   ymin <- ymax - dims[3] * xy_resolution[2]
   raster::extent(xmin, xmax, ymin, ymax)
 }
-
-# e <- hs_extent('data/NEON_D17_SJER_DP3_257000_4111000_reflectance.h5')
 
 
 get_epsg <- function(filename) {

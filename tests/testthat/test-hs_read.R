@@ -4,8 +4,8 @@ context('hs_read')
 
 ex_h5 <- system.file('extdata', 'ex.h5', package = 'neonaop')
 
-test_that('get_dims returns the correct dimensions', {
-  expect_identical(get_dims(ex_h5), c(426L, 30L, 30L))
+test_that('hs_dims returns the correct dimensions', {
+  expect_identical(hs_dims(ex_h5), c(426L, 30L, 30L))
 })
 
 test_that('hs_extent returns the correct extent', {
