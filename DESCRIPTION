@@ -1,16 +1,16 @@
 Package: neonaop
 Type: Package
-Title: National Ecological Observatory Network Aerial Observation Platform Data
+Title: Work with NEON AOP hyperspectral data
 Version: 0.0.9999
 Authors@R: c(
   person(given = "Max",
          family = "Joseph",
-         role = c("aut"),
+         role = c("aut", "cre"),
          email = "maxwell.b.joseph@colorado.edu", 
          comment = c(ORCID = "0000-0002-7745-9990")), 
   person(given = "Leah",
          family = "Wasser",
-         role = c("aut", "cre"),
+         role = c("aut"),
          email = "leah.wasser@colorado.edu", 
          comment = c(ORCID = "0000-0002-8177-6550")))
 Maintainer: Maxwell B. Joseph <maxwell.b.joseph@colorado.edu>
