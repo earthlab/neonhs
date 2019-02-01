@@ -1,4 +1,7 @@
+^codemeta\.json$
+^codecov\.yml$
 ^README\.Rmd$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .travis.yml
+.covrignore

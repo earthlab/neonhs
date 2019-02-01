@@ -7,7 +7,7 @@
 hs_extent(filename)
 }
 \arguments{
-\item{filename}{Path to an .h5 file containing hyperspectral data (char)}
+\item{filename}{Path to an .h5 file containing L3 hyperspectral data (char)}
 }
 \value{
 a raster::extent object that contains the min and max x and y

@@ -13,10 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# neonaop
+# neonaop :airplane:
 
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 ![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 [![Build Status](https://travis-ci.org/earthlab/neonaop.svg?branch=master)](https://travis-ci.org/earthlab/neonaop)
+[![Coverage status](https://codecov.io/gh/earthlab/neonaop/branch/master/graph/badge.svg)](https://codecov.io/github/earthlab/neonaop?branch=master)
 
 The goal of neonaop is to make data from the NEON AOP easier to use. 
 The National Ecological Observatory Network (NEON) collects hyperspectral 
@@ -32,7 +34,9 @@ You can install the development version of neonaop via:
 devtools::install_github('earthlab/neonaop')
 ```
 
-## Example
+## Examples
+
+### Create raster objects from hyperspectral images
 
 This is a basic example which shows you how to read some bands from 
 L3 hyperspectral reflectance data as a multi-layer raster:
@@ -41,6 +45,8 @@ L3 hyperspectral reflectance data as a multi-layer raster:
 library(neonaop)
 library(raster)
 library(viridis)
+library(sp)
+library(tidyverse)
 
 path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
 r <- hs_read(path_to_file, bands = c(1, 50, 100, 400))
@@ -49,4 +55,50 @@ r
 
 ```{r plot}
 plot(r, col = cividis(100), axes = FALSE, box = FALSE)
+```
+
+
+### Extract spectra at spatial point locations
+
+If you need to extract spectra at spatial points, there is a `hs_extract_pts` 
+function that extracts values from bands efficiently, without needing to first
+create a raster object. 
+
+For example, we may want to extract spectra for every band at the following
+two points, defined in a `SpatialPointsDataFrame`. 
+Note also that we can use the `hs_proj4string` function to get the proj4string
+representation of the coordinate reference system used in the hyperspectral
+image.
+
+```{r plot_points}
+
+pts <- SpatialPointsDataFrame(coords = data.frame(x = c(257025, 257011),
+                                                  y = c(4111982, 4111991)), 
+                              data = data.frame(id = 1:2),
+                              proj4string = CRS(hs_proj4string(path_to_file)))
+plot(r[[1]], axes = FALSE, box = FALSE)
+plot(pts, add = TRUE)
+```
+
+To do this efficiently, you can use `hs_extract_pts`:
+
+```{r extract_pts}
+vals <- hs_extract_pts(path_to_file, pts = pts, bands = 1:426)
+vals
+```
+
+Now we have columns with band indices and wavelengths, which we can use to 
+plot spectra, e.g., 
+
+```{r plot_spectra}
+vals %>%
+  as_tibble() %>%
+  select(id, starts_with('band')) %>%
+  gather(band, reflectance, -id) %>%
+  separate(band, c('index', 'wavelength')) %>%
+  mutate(wavelength = parse_number(wavelength)) %>%
+  ggplot(aes(wavelength, reflectance, group = id)) + 
+  geom_line() + 
+  xlab('Wavelength (nm)') + 
+  ylab('Reflectance')
 ```

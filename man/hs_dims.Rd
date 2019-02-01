@@ -7,7 +7,7 @@
 hs_dims(filename)
 }
 \arguments{
-\item{filename}{Path to an .h5 file containing hyperspectral data (char)}
+\item{filename}{Path to an .h5 file containing L3 hyperspectral data (char)}
 }
 \value{
 an integer vector of length 3 containing the number of bands,

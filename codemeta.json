@@ -1,0 +1,141 @@
+{
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
+  "@type": "SoftwareSourceCode",
+  "identifier": "neonaop",
+  "description": "Work with data from the NEON AOP.\n    The National Ecological Observatory Network's (NEON's) Aerial Observation\n    Platform (AOP) collects hyperspectral data over NEON's \n    field sites. This package is designed to make these data easier to use. ",
+  "name": "neonaop: National Ecological Observatory Network Aerial Observation Platform Data",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "0.0.9999",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "3.5.1",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.5.1 (2018-07-02)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Max",
+      "familyName": "Joseph",
+      "email": "maxwell.b.joseph@colorado.edu",
+      "@id": "https://orcid.org/0000-0002-7745-9990"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Leah",
+      "familyName": "Wasser",
+      "email": "leah.wasser@colorado.edu",
+      "@id": "https://orcid.org/0000-0002-8177-6550"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Leah",
+      "familyName": "Wasser",
+      "email": "leah.wasser@colorado.edu",
+      "@id": "https://orcid.org/0000-0002-8177-6550"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "neonUtilities",
+      "name": "neonUtilities",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=neonUtilities"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyverse",
+      "name": "tidyverse",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tidyverse"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "hdf5r",
+      "name": "hdf5r",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=hdf5r"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "raster",
+      "name": "raster",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=raster"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "sp",
+      "name": "sp",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sp"
+    }
+  ],
+  "codeRepository": "https://github.com/earthlab/neonaop",
+  "readme": "https://github.com/earthlab/neonaop/blob/master/README.md",
+  "fileSize": "806.213KB",
+  "contIntegration": [
+    "https://travis-ci.org/earthlab/neonaop",
+    "https://codecov.io/github/earthlab/neonaop?branch=master"
+  ],
+  "issueTracker": "https://github.com/earthlab/neonaop/issues",
+  "developmentStatus": "https://www.repostatus.org/#wip"
+}
