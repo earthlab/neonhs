@@ -25,6 +25,7 @@
 #' @export
 hs_read <- function(filename, bands, crop = FALSE){
   stopifnot(all(bands > 0))
+  bands <- sort(bands)
   h5_extent <- hs_extent(filename)
   use_h5_extent <- isFALSE(crop)
   if (use_h5_extent) {
@@ -45,6 +46,58 @@ hs_read <- function(filename, bands, crop = FALSE){
   r
 }
 
+#' Efficiently extract spectra using a SpatialPointsDataFrame
+#' 
+#' The `hs_extract_pts` function efficiently extracts hyperspectral reflectance 
+#' data at spatial points. This is more efficient than reading the entire 
+#' raster using `hs_read`, then using `raster::extract`.
+#' 
+#' Points that are not contained within the extent of the raster will return NA
+#' values.
+#' 
+#' @inheritParams hs_read
+#' @param pts a `SpatialPointsDataFrame` object defining points where data will
+#' be extracted
+#' 
+#' @export
+hs_extract_pts <- function(filename, pts, bands) {
+  stopifnot(all(bands > 0))
+  bands <- sort(bands)
+  h5_dims <- hs_dims(filename)
+  h5_extent <- hs_extent(filename)
+  r <- raster::raster(h5_extent, crs = hs_proj4string(filename), 
+                      nrows = h5_dims[2], ncols = h5_dims[3])
+  
+  pts[['row_identifier']] <- seq_len(nrow(pts))
+  pts_in_raster <- raster::intersect(pts, r)
+  if (nrow(pts_in_raster) == 0) {
+    stop('None of the points are within the hyperspectral raster extent.')
+  }
+  
+  # assuming pts is a spatialpointsdataframe, find row/col indices
+  cells <- raster::cellFromXY(r, pts_in_raster)
+  rowcols <- raster::rowColFromCell(r, cells)
+  
+  # read the values from the raster
+  file_h5 <- hdf5r::H5File$new(filename, mode = 'r+')
+  site <- file_h5$ls()$name
+  reflectance <- file_h5[[paste0(site, '/Reflectance/Reflectance_Data')]]
+  vals <- matrix(nrow = length(cells), ncol = length(bands))
+  for (i in seq_along(cells)) {
+    vals[i, ] <- reflectance[bands, rowcols[i, 'row'], rowcols[i, 'col']]
+  }
+  vals <- hs_clean(vals, reflectance)
+  file_h5$close_all()
+  
+  colnames(vals) <- hs_wavelength(filename, bands)
+  extracted_vals <- cbind(pts_in_raster['row_identifier'], vals)
+  res <- sp::merge(pts, extracted_vals, by = 'row_identifier')
+  cols_to_keep <- !(names(res) %in% c('row_identifier', 
+                                      'coords.x1', 
+                                      'coords.x2'))
+  res[, cols_to_keep]
+}
+
 
 #' Get the dimensions of a hyperspectral reflectance HDF5 file
 #' 
@@ -53,7 +106,7 @@ hs_read <- function(filename, bands, crop = FALSE){
 #' In most cases, these dimensions will be 426 X 1000 X 1000: 426 bands and 
 #' images that are 1000m by 1000m in their spatial extent at 1 meter resolution.
 #' 
-#' @param filename Path to an .h5 file containing hyperspectral data (char)
+#' @inheritParams hs_read
 #' 
 #' @return an integer vector of length 3 containing the number of bands, 
 #' number of x pixels, and number of y pixels. 
@@ -75,7 +128,7 @@ hs_dims <- function(filename) {
 
 #' Get the spatial extent of a hyperspectral image
 #' 
-#' @param filename Path to an .h5 file containing hyperspectral data (char)
+#' @inheritParams hs_read
 #' 
 #' @return a raster::extent object that contains the min and max x and y 
 #' coordinates of a hyperspectral image
@@ -101,7 +154,16 @@ hs_extent <- function(filename){
 }
 
 
-get_epsg <- function(filename) {
+#' Get the EPSG code of a hyperspectral image
+#' 
+#' This function returns the [EPSG](http://www.epsg.org/) code that defines
+#' the spatial coordinate reference system of an image.
+#' 
+#' @inheritParams hs_read
+#' @return character representation of an epsg code, e.g., '4326'
+#' 
+#' @export
+hs_epsg <- function(filename) {
   file_h5 <- hdf5r::H5File$new(filename, mode = 'r+')
   site <- file_h5$ls()$name
   epsg_path <- paste0(site, '/Reflectance/Metadata/Coordinate_System/EPSG Code')
@@ -110,8 +172,31 @@ get_epsg <- function(filename) {
   epsg_code
 }
 
+#' Get the proj4string for a hyperspectral image
+#' 
+#' This returns the proj4string representation of the coordinate reference 
+#' system of an image.
+#' 
+#' @inheritParams hs_read
+#' @return character proj4string representation
+#' 
+#' @export
+hs_proj4string <- function(filename) {
+  epsg <- hs_epsg(filename)
+  paste0("+init=epsg:", epsg)
+}
 
-get_wavelength <- function(filename, bands) {
+#' Get wavelengths from a hyperspectral image
+#' 
+#' The `hs_wavelength` returns a character vector containing band indices and
+#' wavelengths rounded to the nearest nanometer, e.g., band1_384nm, band2_389nm, 
+#' where band... gives the band index (first band, second band, etc.) and 
+#' ...nm gives the wavelength of that band in nanometers. 
+#' 
+#' @inheritParams hs_read
+#' @return character vector containing band indices and wavelengths
+#' @export
+hs_wavelength <- function(filename, bands) {
   file_h5 <- hdf5r::H5File$new(filename, mode = 'r+')
   site <- file_h5$ls()$name
   w <- file_h5[[paste0(site, '/Reflectance/Metadata/Spectral_Data/Wavelength')]]
@@ -139,16 +224,21 @@ read_hs_values <- function(filename, index){
   })
 
   r <- raster::t(raster::stack(arrays))
-
-  na_value <- reflectance$attr_open('Data_Ignore_Value')$read()
-  r[r == na_value] <- NA
-  scale_factor <- reflectance$attr_open('Scale_Factor')$read()
-  r <- r / scale_factor
+  r <- hs_clean(r, reflectance)
   file_h5$close_all()
 
-  raster::projection(r) <- paste0("+init=epsg:", get_epsg(filename))
-  names(r) <- get_wavelength(filename, bands)
+  raster::projection(r) <- hs_proj4string(filename)
+  names(r) <- hs_wavelength(filename, bands)
   r
+}
+
+
+hs_clean <- function(vals, reflectance) {
+  na_value <- reflectance$attr_open('Data_Ignore_Value')$read()
+  vals[vals == na_value] <- NA
+  scale_factor <- reflectance$attr_open('Scale_Factor')$read()
+  vals <- vals / scale_factor
+  vals
 }
 
 

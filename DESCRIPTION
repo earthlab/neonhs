@@ -18,14 +18,19 @@ Description: Work with data from the NEON AOP.
     The National Ecological Observatory Network's (NEON's) Aerial Observation
     Platform (AOP) collects hyperspectral data over NEON's 
     field sites. This package is designed to make these data easier to use. 
+URL: https://github.com/earthlab/neonaop
+BugReports: https://github.com/earthlab/neonaop/issues
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: 
     hdf5r,
-    raster
+    raster, 
+    sp
 Suggests:
     neonUtilities,
-    testthat
+    testthat,
+    covr, 
+    tidyverse
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1

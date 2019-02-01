@@ -11,15 +11,14 @@
 create_new_example_file <- FALSE
 
 if (create_new_example_file) {
-  library(hdf5r)
-  path <- list.files(pattern = 'NEON_D17_SJER_DP3_257000_4111000_reflectance.h5',
-                     recursive = TRUE, full.names = TRUE)
-  real_file <- H5File$new(path, mode = 'r+')
+  fname <- 'NEON_D17_SJER_DP3_257000_4111000_reflectance.h5'
+  path <- list.files(pattern = fname, recursive = TRUE, full.names = TRUE)
+  real_file <- hdf5r::H5File$new(path, mode = 'r+')
 
   # Create the example file and some relevant groups ------------------------
   ex_path <- 'inst/extdata/ex.h5'
   unlink(ex_path)
-  ex_file <- H5File$new(ex_path, mode = 'w')
+  ex_file <- hdf5r::H5File$new(ex_path, mode = 'w')
   ex_file$create_group('SJER')
   ex_file$create_group('SJER/Reflectance')
   ex_file$create_group('SJER/Reflectance/Metadata')
