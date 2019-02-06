@@ -25,13 +25,8 @@ r_packages:
 
 r_github_packages:
   - jimhester/covr
-  - NEONScience/NEON-geolocation/geoNEON
-  - NEONScience/NEON-utilities/neonUtilities
-  
-script: 
-  - |
-    R CMD build .
-    travis_wait 20 R CMD check neonaop*tar.gz
+
+r_check_args: "--no-vignettes"
 
 after_success:
     - Rscript -e 'covr::codecov()'
