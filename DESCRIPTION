@@ -29,8 +29,12 @@ Imports:
     sp
 Suggests:
     neonUtilities,
+    geoNEON,
     testthat,
-    covr, 
-    tidyverse
+    covr,
+    tidyverse,
+    knitr,
+    rmarkdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr

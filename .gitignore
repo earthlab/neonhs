@@ -1,5 +1,9 @@
+inst/doc
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 *.Rproj
+data
+*DP3.30006.001
+*filesToStack10098

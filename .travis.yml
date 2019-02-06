@@ -25,6 +25,8 @@ r_packages:
 
 r_github_packages:
   - jimhester/covr
+  - NEONScience/NEON-geolocation/geoNEON
+  - NEONScience/NEON-utilities/neonUtilities
 
 after_success:
     - Rscript -e 'covr::codecov()'

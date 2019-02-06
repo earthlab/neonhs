@@ -6,3 +6,5 @@
 .travis.yml
 .covrignore
 ^docs$
+vignettes/DP3*
+vignettes/filesToStack*
