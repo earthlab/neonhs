@@ -28,9 +28,10 @@ r_github_packages:
   - NEONScience/NEON-geolocation/geoNEON
   - NEONScience/NEON-utilities/neonUtilities
   
-script:
-  - travis wait R CMD build .
-  - travis wait R CMD check *tar.gz
+script: 
+  - |
+    R CMD build .
+    travis_wait 20 R CMD check neonaop*tar.gz
 
 after_success:
     - Rscript -e 'covr::codecov()'
