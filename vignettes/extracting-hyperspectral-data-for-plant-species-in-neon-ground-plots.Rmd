@@ -65,7 +65,7 @@ Merge mapping and individual data:
 veg <- right_join(vegind, vegmap, 
              by = c("individualID", "namedLocation",
                     "domainID", "siteID", "plotID")) %>%
-  filter(!is.na(adjEasting), !is.na(adjNorthing))
+  filter(!is.na(adjEasting), !is.na(adjNorthing), plantStatus == "Live")
 ```
 
 Using this spatial data, we can acquire tiles of hyperspectral data that 
