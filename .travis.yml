@@ -25,6 +25,7 @@ r_packages:
 
 r_github_packages:
   - jimhester/covr
+  - NEONScience/NEON-geolocation/geoNEON
 
 script: 
   - |
