@@ -1,0 +1,162 @@
+---
+title: "Extracting hyperspectral data for plant species in NEON ground plots"
+author: "Maxwell B. Joseph"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette shows how the neonaop package can be combined with the 
+[neonUtilities](https://github.com/NEONScience/NEON-utilities/) and 
+[geoNEON](https://github.com/NEONScience/NEON-geolocation) packages to 
+programmatically access woody vegetation 
+data from NEON ground plots, and extract spectra from hyperspectral imagery. 
+
+```{r load-libraries, message=FALSE}
+library(raster)
+library(neonUtilities)
+library(geoNEON)
+library(neonaop)
+library(sp)
+library(tidyverse)
+```
+
+First, we need to download vegetation data (data acquisition steps
+below are adapted from the documentation in the neonUtilities and geoNEON 
+packages):
+
+```{r get-veg-data, warning=FALSE, results='hide', message=FALSE}
+zipsByProduct(dpID = "DP1.10098.001", 
+              site = "TALL", 
+              savepath = ".", 
+              check.size = FALSE)
+stackByTable("filesToStack10098", folder = TRUE)
+```
+
+Then, we can read the mapping data and apparent individual data. 
+We will restrict our focus to one year's worth of data, to simplify the process
+of matching ground plot data in one year to the same year's imagery.
+
+```{r read-map, warning=FALSE, results='hide', message=FALSE}
+vegmap <- "filesToStack10098/stackedFiles/vst_mappingandtagging.csv" %>%
+  read_csv %>%
+  mutate(year = substr(date, 1, 4)) %>%
+  filter(year == '2017') %>%
+  def.calc.geo.os("vst_mappingandtagging")
+
+vegind <- read_csv("filesToStack10098/stackedFiles/vst_apparentindividual.csv")
+```
+
+Merge mapping and individual data: 
+
+```{r get-precise-locs, warning=FALSE, results='hide', message=FALSE}
+veg <- right_join(vegind, vegmap, 
+             by = c("individualID", "namedLocation",
+                    "domainID", "siteID", "plotID")) %>%
+  filter(!is.na(adjEasting), !is.na(adjNorthing), plantStatus == "Live")
+```
+
+Using this spatial data, we can acquire tiles of hyperspectral data that 
+intersect the plants that were mapped on the ground.
+
+```{r get-hyperspectral-data, results='hide', message=FALSE}
+byTileAOP(dpID = "DP3.30006.001", site = "TALL", year = "2017", 
+          easting = veg$adjEasting, northing = veg$adjNorthing, 
+          check.size = FALSE)
+hs_paths <- list.files(path='.', pattern = 'reflectance.h5', 
+                       recursive = TRUE, full.names = TRUE)
+```
+
+Now, create a SpatialPointsDataFrame of these points. 
+
+```{r make-spdf}
+spdf <- SpatialPointsDataFrame(veg[, c('adjEasting', 'adjNorthing')], 
+                               data = veg, 
+                               proj4string = CRS(hs_proj4string(hs_paths[1])))
+```
+
+Now, let's visualize the extents of these hyperspectral images and the locations
+of the mapped plants:
+
+```{r plot-locations-and-extents}
+extents <- lapply(hs_paths, hs_extent)
+
+plot(do.call(raster::merge, extents), bty = 'n', 
+     xlab = 'Easting', ylab = 'Northing')
+plot(spdf, add = TRUE)
+for (e in extents) {
+  plot(e, add = TRUE)
+}
+```
+
+Each mapped plant location is covered by an extent object for a 
+hyperspectral image. 
+We can use the `neonaop` package to extract hyperspectral data at these 
+locations. 
+
+```{r extract-hs-data}
+out <- list()
+for (i in seq_along(hs_paths)) {
+  res <- hs_extract_pts(hs_paths[i], pts = spdf, bands = 1:426)
+  first_band <- grep('^band1', names(res), value = TRUE)[1]
+  na_vals <- is.na(res[[first_band]])
+  out[[i]] <- res[!na_vals, ]
+}
+```
+
+Now let's create a tibble for easy plotting:
+
+```{r make-tibble}
+hs_df <- lapply(out, as.data.frame) %>% 
+  bind_rows %>% 
+  as_tibble %>%
+  select(uid.x, adjEasting, adjNorthing, plantStatus, scientificName, 
+         starts_with('band')) %>%
+  filter(plantStatus == 'Live') %>%
+  distinct
+hs_df
+```
+
+And gather the hyperspectral columns (converting the data from wide to long 
+form).
+
+```{r make-long, fig.width=6, fig.height=3}
+long_df <- hs_df %>%
+  gather(band, reflectance, 
+         -starts_with('adj'), -plantStatus, -scientificName, -uid.x) %>%
+  separate(band, c('index', 'wavelength')) %>%
+  mutate(wavelength = parse_number(wavelength)) %>%
+  separate(scientificName, into = c('genus', 'species'), sep = ' ', 
+                                    extra = 'drop', remove = FALSE) %>%
+  mutate(genusspecies = paste(genus, species)) %>%
+  # filter water vapor bands out
+  filter(!between(wavelength, 1340, 1445), 
+         !between(wavelength, 1790, 1955))
+
+long_df %>%
+  ggplot(aes(wavelength, reflectance, group = uid.x)) + 
+  geom_point(size = .2, alpha = .5) + 
+  xlab('Wavelength (nm)') + 
+  ylab('Reflectance') + 
+  facet_wrap(~genusspecies) + 
+  theme_minimal()
+```
+
+
+```{r clean-files, echo = FALSE}
+# Finally, clean up the files that were downloaded:
+unlink('DP3.30006.001/', recursive = TRUE, force = TRUE)
+unlink('filesToStack10098/', recursive = TRUE, force = TRUE)
+```
