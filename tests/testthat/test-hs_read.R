@@ -82,14 +82,20 @@ test_that('hs_extract_pts returns NA for points outside the raster extent', {
 
 
 test_that('hs_extract_pts returns a SpatialPointsDataFrame with right vals', {
-  p <- sp::SpatialPointsDataFrame(coords = data.frame(x = c(257010, 257011),
+  p <- sp::SpatialPointsDataFrame(coords = data.frame(x = c(257010, 257025),
                                                       y = c(4111990, 4111991)), 
                                   data = data.frame(id = 1:2),
                                   proj4string = sp::CRS('+init=epsg:32611'))
-  band_to_read <- sample(426, 10)
+  band_to_read <- sample(426, 5)
   vals <- hs_extract_pts(ex_h5, p, bands = band_to_read)
   expect_identical(nrow(vals), 2L)
   expected_cols <- hs_wavelength(ex_h5, bands = band_to_read)
   expect_true(all(expected_cols %in%  names(vals)))
   expect_s4_class(vals, 'SpatialPointsDataFrame')
+  
+  # check that hs_extract_pts results match raster::extract
+  hs_raster <- hs_read(ex_h5, bands = band_to_read)
+  hs_pts <- raster::extract(hs_raster, p)
+  vals_df <- as.data.frame(vals)[, colnames(hs_pts)]
+  expect_identical(as.data.frame(hs_pts), vals_df)
 })

@@ -84,7 +84,7 @@ hs_extract_pts <- function(filename, pts, bands) {
   reflectance <- file_h5[[paste0(site, '/Reflectance/Reflectance_Data')]]
   vals <- matrix(nrow = length(cells), ncol = length(bands))
   for (i in seq_along(cells)) {
-    vals[i, ] <- reflectance[bands, rowcols[i, 'row'], rowcols[i, 'col']]
+    vals[i, ] <- reflectance[bands, rowcols[i, 'col'], rowcols[i, 'row']]
   }
   vals <- hs_clean(vals, reflectance)
   file_h5$close_all()

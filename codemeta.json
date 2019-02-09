@@ -160,7 +160,7 @@
   ],
   "codeRepository": "https://github.com/earthlab/neonaop",
   "readme": "https://github.com/earthlab/neonaop/blob/master/README.md",
-  "fileSize": "808.558KB",
+  "fileSize": "809.26KB",
   "contIntegration": [
     "https://travis-ci.org/earthlab/neonaop",
     "https://codecov.io/github/earthlab/neonaop?branch=master"
