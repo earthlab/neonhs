@@ -90,7 +90,7 @@ spdf <- SpatialPointsDataFrame(veg[, c('adjEasting', 'adjNorthing')],
 Now, let's visualize the extents of these hyperspectral images and the locations
 of the mapped plants:
 
-```{r plot-locations-and-extents}
+```{r plot-locations-and-extents, fig.width=6, fig.height=4}
 extents <- lapply(hs_paths, hs_extent)
 
 plot(do.call(raster::merge, extents), bty = 'n', 
@@ -132,19 +132,24 @@ hs_df
 And gather the hyperspectral columns (converting the data from wide to long 
 form).
 
-```{r make-long, fig.width=6, fig.height=3}
+```{r make-long}
 long_df <- hs_df %>%
   gather(band, reflectance, 
          -starts_with('adj'), -plantStatus, -scientificName, -uid.x) %>%
   separate(band, c('index', 'wavelength')) %>%
   mutate(wavelength = parse_number(wavelength)) %>%
   separate(scientificName, into = c('genus', 'species'), sep = ' ', 
-                                    extra = 'drop', remove = FALSE) %>%
+           extra = 'drop', remove = FALSE) %>%
   mutate(genusspecies = paste(genus, species)) %>%
   # filter water vapor bands out
   filter(!between(wavelength, 1340, 1445), 
          !between(wavelength, 1790, 1955))
+long_df
+```
 
+Finally, we can plot the signatures for each species:
+
+```{r plot-hs, fig.width=6, fig.height=3}
 long_df %>%
   ggplot(aes(wavelength, reflectance, group = uid.x)) + 
   geom_point(size = .2, alpha = .5) + 

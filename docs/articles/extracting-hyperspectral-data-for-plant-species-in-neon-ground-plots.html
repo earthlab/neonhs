@@ -80,7 +80,7 @@
       <h1>Extracting hyperspectral data for plant species in NEON ground plots</h1>
                         <h4 class="author">Maxwell B. Joseph</h4>
             
-            <h4 class="date">2019-02-06</h4>
+            <h4 class="date">2019-02-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/earthlab/neonaop/blob/master/vignettes/extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd"><code>vignettes/extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd</code></a></small>
       <div class="hidden name"><code>extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd</code></div>
@@ -114,7 +114,7 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">veg &lt;-<span class="st"> </span><span class="kw">right_join</span>(vegind, vegmap, </a>
 <a class="sourceLine" id="cb4-2" title="2">             <span class="dt">by =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"individualID"</span>, <span class="st">"namedLocation"</span>,</a>
 <a class="sourceLine" id="cb4-3" title="3">                    <span class="st">"domainID"</span>, <span class="st">"siteID"</span>, <span class="st">"plotID"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(adjEasting), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(adjNorthing))</a></code></pre></div>
+<a class="sourceLine" id="cb4-4" title="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(adjEasting), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(adjNorthing), plantStatus <span class="op">==</span><span class="st"> "Live"</span>)</a></code></pre></div>
 <p>Using this spatial data, we can acquire tiles of hyperspectral data that intersect the plants that were mapped on the ground.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/neonUtilities/topics/byTileAOP">byTileAOP</a></span>(<span class="dt">dpID =</span> <span class="st">"DP3.30006.001"</span>, <span class="dt">site =</span> <span class="st">"TALL"</span>, <span class="dt">year =</span> <span class="st">"2017"</span>, </a>
 <a class="sourceLine" id="cb5-2" title="2">          <span class="dt">easting =</span> veg<span class="op">$</span>adjEasting, <span class="dt">northing =</span> veg<span class="op">$</span>adjNorthing, </a>
@@ -134,7 +134,7 @@
 <a class="sourceLine" id="cb7-6" title="6"><span class="cf">for</span> (e <span class="cf">in</span> extents) {</a>
 <a class="sourceLine" id="cb7-7" title="7">  <span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(e, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb7-8" title="8">}</a></code></pre></div>
-<p><img src="extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots_files/figure-html/plot-locations-and-extents-1.png" width="700"></p>
+<p><img src="extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots_files/figure-html/plot-locations-and-extents-1.png" width="576"></p>
 <p>Each mapped plant location is covered by an extent object for a hyperspectral image. We can use the <code>neonaop</code> package to extract hyperspectral data at these locations.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">out &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>()</a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(hs_paths)) {</a>
@@ -155,17 +155,17 @@
 <a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt; # A tibble: 11 x 431</span></a>
 <a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;    uid.x adjEasting adjNorthing plantStatus scientificName band1_384nm</span></a>
 <a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  1 fa8a…    462671.    3645859. Live        Pinus palustr…      0.0469</span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  2 018e…    462758.    3645667. Live        Cornus florid…      0.0568</span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt;  3 97e7…    462831.    3646134. Live        Pinus echinat…      0.0389</span></a>
-<a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt;  4 237a…    462865.    3646029. Live        Pinus palustr…      0.0598</span></a>
-<a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt;  5 f91d…    462865.    3646029. Live        Pinus palustr…      0.0598</span></a>
-<a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt;  6 e635…    462719.    3646114. Live        Quercus velut…      0.061 </span></a>
-<a class="sourceLine" id="cb9-18" title="18"><span class="co">#&gt;  7 73c2…    462733.    3646108. Live        Cornus florid…      0.069 </span></a>
-<a class="sourceLine" id="cb9-19" title="19"><span class="co">#&gt;  8 f68a…    463029.    3645994. Live        Cornus florid…      0.0717</span></a>
-<a class="sourceLine" id="cb9-20" title="20"><span class="co">#&gt;  9 f0f3…    463033.    3646187. Live        Cornus florid…      0.0524</span></a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="co">#&gt; 10 8d73…    463033.    3646187. Live        Cornus florid…      0.0524</span></a>
-<a class="sourceLine" id="cb9-22" title="22"><span class="co">#&gt; 11 d9f7…    463037.    3646191. Live        Pinus echinat…      0.0706</span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  1 fa8a…    462671.    3645859. Live        Pinus palustr…      0.0427</span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  2 018e…    462758.    3645667. Live        Cornus florid…      0.0317</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt;  3 97e7…    462831.    3646134. Live        Pinus echinat…      0.054 </span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt;  4 237a…    462865.    3646029. Live        Pinus palustr…      0.0574</span></a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt;  5 f91d…    462865.    3646029. Live        Pinus palustr…      0.0574</span></a>
+<a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt;  6 e635…    462719.    3646114. Live        Quercus velut…      0.0565</span></a>
+<a class="sourceLine" id="cb9-18" title="18"><span class="co">#&gt;  7 73c2…    462733.    3646108. Live        Cornus florid…      0.0421</span></a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="co">#&gt;  8 f68a…    463029.    3645994. Live        Cornus florid…      0.0606</span></a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="co">#&gt;  9 f0f3…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
+<a class="sourceLine" id="cb9-21" title="21"><span class="co">#&gt; 10 8d73…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="co">#&gt; 11 d9f7…    463037.    3646191. Live        Pinus echinat…      0.0747</span></a>
 <a class="sourceLine" id="cb9-23" title="23"><span class="co">#&gt; # … with 425 more variables: band2_389nm &lt;dbl&gt;, band3_394nm &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb9-24" title="24"><span class="co">#&gt; #   band4_399nm &lt;dbl&gt;, band5_404nm &lt;dbl&gt;, band6_409nm &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb9-25" title="25"><span class="co">#&gt; #   band7_414nm &lt;dbl&gt;, band8_419nm &lt;dbl&gt;, band9_424nm &lt;dbl&gt;,</span></a>
@@ -207,20 +207,36 @@
 <a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw">separate</span>(band, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'index'</span>, <span class="st">'wavelength'</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wavelength =</span> <span class="kw">parse_number</span>(wavelength)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-6" title="6"><span class="st">  </span><span class="kw">separate</span>(scientificName, <span class="dt">into =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'genus'</span>, <span class="st">'species'</span>), <span class="dt">sep =</span> <span class="st">' '</span>, </a>
-<a class="sourceLine" id="cb10-7" title="7">                                    <span class="dt">extra =</span> <span class="st">'drop'</span>, <span class="dt">remove =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-7" title="7">           <span class="dt">extra =</span> <span class="st">'drop'</span>, <span class="dt">remove =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">genusspecies =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(genus, species)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-9" title="9"><span class="st">  </span><span class="co"># filter water vapor bands out</span></a>
 <a class="sourceLine" id="cb10-10" title="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw">between</span>(wavelength, <span class="dv">1340</span>, <span class="dv">1445</span>), </a>
 <a class="sourceLine" id="cb10-11" title="11">         <span class="op">!</span><span class="kw">between</span>(wavelength, <span class="dv">1790</span>, <span class="dv">1955</span>))</a>
-<a class="sourceLine" id="cb10-12" title="12"></a>
-<a class="sourceLine" id="cb10-13" title="13">long_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-14" title="14"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(wavelength, reflectance, <span class="dt">group =</span> uid.x)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-15" title="15"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">.2</span>, <span class="dt">alpha =</span> <span class="fl">.5</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-16" title="16"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">'Wavelength (nm)'</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-17" title="17"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">'Reflectance'</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-18" title="18"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>genusspecies) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-19" title="19"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
-<p><img src="extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots_files/figure-html/make-long-1.png" width="576"></p>
+<a class="sourceLine" id="cb10-12" title="12">long_df</a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="co">#&gt; # A tibble: 4,081 x 11</span></a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="co">#&gt;    uid.x adjEasting adjNorthing plantStatus scientificName genus species</span></a>
+<a class="sourceLine" id="cb10-15" title="15"><span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb10-16" title="16"><span class="co">#&gt;  1 fa8a…    462671.    3645859. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-17" title="17"><span class="co">#&gt;  2 018e…    462758.    3645667. Live        Cornus florid… Corn… florida</span></a>
+<a class="sourceLine" id="cb10-18" title="18"><span class="co">#&gt;  3 97e7…    462831.    3646134. Live        Pinus echinat… Pinus echina…</span></a>
+<a class="sourceLine" id="cb10-19" title="19"><span class="co">#&gt;  4 237a…    462865.    3646029. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-20" title="20"><span class="co">#&gt;  5 f91d…    462865.    3646029. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-21" title="21"><span class="co">#&gt;  6 e635…    462719.    3646114. Live        Quercus velut… Quer… veluti…</span></a>
+<a class="sourceLine" id="cb10-22" title="22"><span class="co">#&gt;  7 73c2…    462733.    3646108. Live        Cornus florid… Corn… florida</span></a>
+<a class="sourceLine" id="cb10-23" title="23"><span class="co">#&gt;  8 f68a…    463029.    3645994. Live        Cornus florid… Corn… florida</span></a>
+<a class="sourceLine" id="cb10-24" title="24"><span class="co">#&gt;  9 f0f3…    463033.    3646187. Live        Cornus florid… Corn… florida</span></a>
+<a class="sourceLine" id="cb10-25" title="25"><span class="co">#&gt; 10 8d73…    463033.    3646187. Live        Cornus florid… Corn… florida</span></a>
+<a class="sourceLine" id="cb10-26" title="26"><span class="co">#&gt; # … with 4,071 more rows, and 4 more variables: index &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb10-27" title="27"><span class="co">#&gt; #   wavelength &lt;dbl&gt;, reflectance &lt;dbl&gt;, genusspecies &lt;chr&gt;</span></a></code></pre></div>
+<p>Finally, we can plot the signatures for each species:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">long_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(wavelength, reflectance, <span class="dt">group =</span> uid.x)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">.2</span>, <span class="dt">alpha =</span> <span class="fl">.5</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">'Wavelength (nm)'</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">'Reflectance'</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>genusspecies) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<p><img src="extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots_files/figure-html/plot-hs-1.png" width="576"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
