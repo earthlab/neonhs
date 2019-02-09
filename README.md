@@ -14,7 +14,7 @@ status](https://codecov.io/gh/earthlab/neonaop/branch/master/graph/badge.svg)](h
 
 The goal of neonaop is to make data from the NEON AOP easier to use. The
 National Ecological Observatory Network (NEON) collects hyperspectral
-imagery via its Aerial Observation Platform (AOP) at a 1 meter spatial
+imagery via its Airborne Observation Platform (AOP) at a 1 meter spatial
 resolution for 426 different wavelengths.
 
 ## Installation
@@ -73,7 +73,6 @@ representation of the coordinate reference system used in the
 hyperspectral image.
 
 ``` r
-
 pts <- SpatialPointsDataFrame(coords = data.frame(x = c(257025, 257011),
                                                   y = c(4111982, 4111991)), 
                               data = data.frame(id = 1:2),

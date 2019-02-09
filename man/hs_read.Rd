@@ -17,7 +17,7 @@ hs_read(filename, bands, crop = FALSE)
 Raster* object containing hyperspectral data
 }
 \description{
-The \code{hs_read} function reads hyperspectral imagery from NEON's Aerial
+The \code{hs_read} function reads hyperspectral imagery from NEON's Airborne
 Observation Platform, and returns a Raster* object.
 }
 \details{

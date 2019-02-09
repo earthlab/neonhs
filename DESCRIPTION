@@ -15,7 +15,7 @@ Authors@R: c(
          comment = c(ORCID = "0000-0002-8177-6550")))
 Maintainer: Maxwell B. Joseph <maxwell.b.joseph@colorado.edu>
 Description: Work with data from the NEON AOP.
-    The National Ecological Observatory Network's (NEON's) Aerial Observation
+    The National Ecological Observatory Network's (NEON's) Airborne Observation
     Platform (AOP) collects hyperspectral data over NEON's 
     field sites. This package is designed to make these data easier to use. 
 URL: https://github.com/earthlab/neonaop

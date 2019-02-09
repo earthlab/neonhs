@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "neonaop",
-  "description": "Work with data from the NEON AOP.\n    The National Ecological Observatory Network's (NEON's) Aerial Observation\n    Platform (AOP) collects hyperspectral data over NEON's \n    field sites. This package is designed to make these data easier to use. ",
+  "description": "Work with data from the NEON AOP.\n    The National Ecological Observatory Network's (NEON's) Airborne Observation\n    Platform (AOP) collects hyperspectral data over NEON's \n    field sites. This package is designed to make these data easier to use. ",
   "name": "neonaop: Work with NEON AOP hyperspectral data",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.0.9999",
@@ -160,7 +160,7 @@
   ],
   "codeRepository": "https://github.com/earthlab/neonaop",
   "readme": "https://github.com/earthlab/neonaop/blob/master/README.md",
-  "fileSize": "860.275KB",
+  "fileSize": "808.558KB",
   "contIntegration": [
     "https://travis-ci.org/earthlab/neonaop",
     "https://codecov.io/github/earthlab/neonaop?branch=master"

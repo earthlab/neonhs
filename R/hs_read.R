@@ -1,6 +1,6 @@
 #' Read hyperspectral imagery from the NEON AOP
 #'
-#' The `hs_read` function reads hyperspectral imagery from NEON's Aerial
+#' The `hs_read` function reads hyperspectral imagery from NEON's Airborne
 #' Observation Platform, and returns a Raster* object.
 #'
 #' You can learn more the NEON AOP hyperspectral imagery at:
