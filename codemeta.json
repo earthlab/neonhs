@@ -12,10 +12,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.2",
+    "version": "3.4.4",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.2 (2018-12-20)",
+  "runtimePlatform": "R version 3.4.4 (2018-03-15)",
   "author": [
     {
       "@type": "Person",
@@ -118,6 +118,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "viridis",
+      "name": "viridis",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=viridis"
     }
   ],
   "softwareRequirements": [
@@ -160,7 +172,7 @@
   ],
   "codeRepository": "https://github.com/earthlab/neonaop",
   "readme": "https://github.com/earthlab/neonaop/blob/master/README.md",
-  "fileSize": "809.26KB",
+  "fileSize": "863.093KB",
   "contIntegration": [
     "https://travis-ci.org/earthlab/neonaop",
     "https://codecov.io/github/earthlab/neonaop?branch=master"
