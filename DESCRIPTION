@@ -34,7 +34,8 @@ Suggests:
     covr,
     tidyverse,
     knitr,
-    rmarkdown
+    rmarkdown,
+    viridis
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

@@ -93,8 +93,8 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version of neonaop via:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#install.packages('devtools')</span></a>
-<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">'earthlab/neonaop'</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages('devtools')</span>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">'earthlab/neonaop'</span>)</code></pre></div>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
@@ -103,25 +103,25 @@
 <h3 class="hasAnchor">
 <a href="#create-raster-objects-from-hyperspectral-images" class="anchor"></a>Create raster objects from hyperspectral images</h3>
 <p>This is a basic example which shows you how to read some bands from L3 hyperspectral reflectance data as a multi-layer raster:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(neonaop)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(raster)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(viridis)</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sp)</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a>
-<a class="sourceLine" id="cb2-6" title="6"></a>
-<a class="sourceLine" id="cb2-7" title="7">path_to_file &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">'extdata'</span>, <span class="st">'ex.h5'</span>, <span class="dt">package =</span> <span class="st">'neonaop'</span>)</a>
-<a class="sourceLine" id="cb2-8" title="8">r &lt;-<span class="st"> </span><span class="kw"><a href="reference/hs_read.html">hs_read</a></span>(path_to_file, <span class="dt">bands =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">400</span>))</a>
-<a class="sourceLine" id="cb2-9" title="9">r</a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt; class       : RasterBrick </span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt; dimensions  : 30, 30, 900, 4  (nrow, ncol, ncell, nlayers)</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; resolution  : 1, 1  (x, y)</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt; extent      : 257000, 257030, 4111970, 4112000  (xmin, xmax, ymin, ymax)</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; coord. ref. : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 </span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; data source : in memory</span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; names       : band1_384nm, band50_629nm, band100_879nm, band400_2382nm </span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; min values  :      0.0198,       0.0073,        0.0620,         0.0051 </span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; max values  :      0.1348,       0.1113,        0.6743,         0.2072</span></a></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(r, <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/viridis/topics/reexports">cividis</a></span>(<span class="dv">100</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">box =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(neonaop)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(raster)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(viridis)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sp)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)
+
+path_to_file &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">'extdata'</span>, <span class="st">'ex.h5'</span>, <span class="dt">package =</span> <span class="st">'neonaop'</span>)
+r &lt;-<span class="st"> </span><span class="kw"><a href="reference/hs_read.html">hs_read</a></span>(path_to_file, <span class="dt">bands =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">400</span>))
+r
+<span class="co">#&gt; class       : RasterBrick </span>
+<span class="co">#&gt; dimensions  : 30, 30, 900, 4  (nrow, ncol, ncell, nlayers)</span>
+<span class="co">#&gt; resolution  : 1, 1  (x, y)</span>
+<span class="co">#&gt; extent      : 257000, 257030, 4111970, 4112000  (xmin, xmax, ymin, ymax)</span>
+<span class="co">#&gt; coord. ref. : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 </span>
+<span class="co">#&gt; data source : in memory</span>
+<span class="co">#&gt; names       : band1_384nm, band50_629nm, band100_879nm, band400_2382nm </span>
+<span class="co">#&gt; min values  :      0.0198,       0.0073,        0.0620,         0.0051 </span>
+<span class="co">#&gt; max values  :      0.1348,       0.1113,        0.6743,         0.2072</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(r, <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/viridis/topics/reexports">cividis</a></span>(<span class="dv">100</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">box =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p><img src="reference/figures/README-plot-1.png" width="100%"></p>
 </div>
 <div id="extract-spectra-at-spatial-point-locations" class="section level3">
@@ -129,35 +129,35 @@
 <a href="#extract-spectra-at-spatial-point-locations" class="anchor"></a>Extract spectra at spatial point locations</h3>
 <p>If you need to extract spectra at spatial points, there is a <code>hs_extract_pts</code> function that extracts values from bands efficiently, without needing to first create a raster object.</p>
 <p>For example, we may want to extract spectra for every band at the following two points, defined in a <code>SpatialPointsDataFrame</code>. Note also that we can use the <code>hs_proj4string</code> function to get the proj4string representation of the coordinate reference system used in the hyperspectral image.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">pts &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sp/topics/SpatialPoints">SpatialPointsDataFrame</a></span>(<span class="dt">coords =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">257025</span>, <span class="dv">257011</span>),</a>
-<a class="sourceLine" id="cb4-2" title="2">                                                  <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">4111982</span>, <span class="dv">4111991</span>)), </a>
-<a class="sourceLine" id="cb4-3" title="3">                              <span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb4-4" title="4">                              <span class="dt">proj4string =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/sp/topics/CRS-class">CRS</a></span>(<span class="kw"><a href="reference/hs_proj4string.html">hs_proj4string</a></span>(path_to_file)))</a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(r[[<span class="dv">1</span>]], <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">box =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(pts, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pts &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sp/topics/SpatialPoints">SpatialPointsDataFrame</a></span>(<span class="dt">coords =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">257025</span>, <span class="dv">257011</span>),
+                                                  <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">4111982</span>, <span class="dv">4111991</span>)), 
+                              <span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>),
+                              <span class="dt">proj4string =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/sp/topics/CRS-class">CRS</a></span>(<span class="kw"><a href="reference/hs_proj4string.html">hs_proj4string</a></span>(path_to_file)))
+<span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(r[[<span class="dv">1</span>]], <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">box =</span> <span class="ot">FALSE</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(pts, <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p><img src="reference/figures/README-plot_points-1.png" width="100%"></p>
 <p>To do this efficiently, you can use <code>hs_extract_pts</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">vals &lt;-<span class="st"> </span><span class="kw"><a href="reference/hs_extract_pts.html">hs_extract_pts</a></span>(path_to_file, <span class="dt">pts =</span> pts, <span class="dt">bands =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">426</span>)</a>
-<a class="sourceLine" id="cb5-2" title="2">vals</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; class       : SpatialPointsDataFrame </span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; features    : 2 </span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; extent      : 257011, 257025, 4111982, 4111991  (xmin, xmax, ymin, ymax)</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; coord. ref. : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 </span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; variables   : 429</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt; names       : id, band1_384nm, band2_389nm, band3_394nm, band4_399nm, band5_404nm, band6_409nm, band7_414nm, band8_419nm, band9_424nm, band10_429nm, band11_434nm, band12_439nm, band13_444nm, band14_449nm, ... </span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt; min values  :  1,      0.0889,      0.0734,      0.0574,      0.0579,      0.0528,       0.054,       0.058,      0.0563,      0.0595,        0.062,       0.0618,       0.0637,       0.0642,       0.0637, ... </span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt; max values  :  2,      0.0987,      0.0879,      0.0778,      0.0759,      0.0669,      0.0681,      0.0656,      0.0659,       0.062,        0.063,        0.064,       0.0639,       0.0657,       0.0653, ...</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vals &lt;-<span class="st"> </span><span class="kw"><a href="reference/hs_extract_pts.html">hs_extract_pts</a></span>(path_to_file, <span class="dt">pts =</span> pts, <span class="dt">bands =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">426</span>)
+vals
+<span class="co">#&gt; class       : SpatialPointsDataFrame </span>
+<span class="co">#&gt; features    : 2 </span>
+<span class="co">#&gt; extent      : 257011, 257025, 4111982, 4111991  (xmin, xmax, ymin, ymax)</span>
+<span class="co">#&gt; coord. ref. : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 </span>
+<span class="co">#&gt; variables   : 429</span>
+<span class="co">#&gt; names       : id, band1_384nm, band2_389nm, band3_394nm, band4_399nm, band5_404nm, band6_409nm, band7_414nm, band8_419nm, band9_424nm, band10_429nm, band11_434nm, band12_439nm, band13_444nm, band14_449nm, ... </span>
+<span class="co">#&gt; min values  :  1,      0.0889,      0.0734,      0.0574,      0.0579,      0.0528,       0.054,       0.058,      0.0563,      0.0595,        0.062,       0.0618,       0.0637,       0.0642,       0.0637, ... </span>
+<span class="co">#&gt; max values  :  2,      0.0987,      0.0879,      0.0778,      0.0759,      0.0669,      0.0681,      0.0656,      0.0659,       0.062,        0.063,        0.064,       0.0639,       0.0657,       0.0653, ...</span></code></pre></div>
 <p>Now we have columns with band indices and wavelengths, which we can use to plot spectra, e.g.,</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">vals <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/select">select</a></span>(id, <span class="kw">starts_with</span>(<span class="st">'band'</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">gather</span>(band, reflectance, <span class="op">-</span>id) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="st">  </span><span class="kw">separate</span>(band, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'index'</span>, <span class="st">'wavelength'</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wavelength =</span> <span class="kw">parse_number</span>(wavelength)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(wavelength, reflectance, <span class="dt">group =</span> id)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">'Wavelength (nm)'</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">'Reflectance'</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vals <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/select">select</a></span>(id, <span class="kw">starts_with</span>(<span class="st">'band'</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(band, reflectance, <span class="op">-</span>id) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">separate</span>(band, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'index'</span>, <span class="st">'wavelength'</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wavelength =</span> <span class="kw">parse_number</span>(wavelength)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(wavelength, reflectance, <span class="dt">group =</span> id)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">'Wavelength (nm)'</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">'Reflectance'</span>)</code></pre></div>
 <p><img src="reference/figures/README-plot_spectra-1.png" width="100%"></p>
 </div>
 </div>

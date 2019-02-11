@@ -72,12 +72,13 @@ test_that('hs_read returns an expected raster at cropped extent', {
 })
 
 
-test_that('hs_extract_pts returns NA for points outside the raster extent', {
+test_that('hs_extract_pts warns if all points outside the raster extent', {
   p <- sp::SpatialPointsDataFrame(coords = data.frame(x = 0, y = 0), 
                                   data = data.frame(id = 1),
                                   proj4string = sp::CRS('+init=epsg:32611'))
-  expect_error(hs_extract_pts(ex_h5, p, bands = 1), 
-               regex = 'None of the points are within')
+  expect_warning(new_p <- hs_extract_pts(ex_h5, p, bands = 1), 
+                 regex = 'No points are within')
+  expect_identical(p, new_p)
 })
 
 

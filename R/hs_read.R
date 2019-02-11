@@ -27,7 +27,7 @@ hs_read <- function(filename, bands, crop = FALSE){
   stopifnot(all(bands > 0))
   bands <- sort(bands)
   h5_extent <- hs_extent(filename)
-  use_h5_extent <- isFALSE(crop)
+  use_h5_extent <- identical(crop, FALSE)
   if (use_h5_extent) {
     out_extent <- h5_extent
     dims <- hs_dims(filename)
@@ -71,7 +71,8 @@ hs_extract_pts <- function(filename, pts, bands) {
   pts[['row_identifier']] <- seq_len(nrow(pts))
   pts_in_raster <- raster::intersect(pts, r)
   if (nrow(pts_in_raster) == 0) {
-    stop('None of the points are within the hyperspectral raster extent.')
+    warning('No points are within the hyperspectral raster extent.')
+    return(pts[, names(pts) != 'row_identifier'])
   }
   
   # assuming pts is a spatialpointsdataframe, find row/col indices
