@@ -4,7 +4,7 @@ author: "Maxwell B. Joseph"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Extract plant spectra}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+NOT_CRAN <- identical(tolower(Sys.getenv('NOT_CRAN')), "true")
+knitr::opts_chunk$set(purl = NOT_CRAN, 
+                      eval = NOT_CRAN)
 ```
 
 This vignette shows how the neonaop package can be combined with the 
@@ -59,7 +63,7 @@ vegmap <- "filesToStack10098/stackedFiles/vst_mappingandtagging.csv" %>%
 vegind <- read_csv("filesToStack10098/stackedFiles/vst_apparentindividual.csv")
 ```
 
-Merge mapping and individual data: 
+Merge mapping and individual data, and filter to live plants with coordinates: 
 
 ```{r get-precise-locs, warning=FALSE, results='hide', message=FALSE}
 veg <- right_join(vegind, vegmap, 
