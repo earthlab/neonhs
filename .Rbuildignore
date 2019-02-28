@@ -1,3 +1,4 @@
+^appveyor\.yml$
 ^codemeta\.json$
 ^codecov\.yml$
 ^README\.Rmd$
