@@ -6,9 +6,10 @@
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-![Lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 [![Build
 Status](https://travis-ci.org/earthlab/neonaop.svg?branch=master)](https://travis-ci.org/earthlab/neonaop)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/earthlab/neonaop?branch=master&svg=true)](https://ci.appveyor.com/project/earthlab/neonaop)
 [![Coverage
 status](https://codecov.io/gh/earthlab/neonaop/branch/master/graph/badge.svg)](https://codecov.io/github/earthlab/neonaop?branch=master)
 
