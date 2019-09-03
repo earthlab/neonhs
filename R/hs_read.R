@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' library(raster)
-#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonhs')
 #'
 #' # read the full spatial extent of a file
 #' r <- hs_read(path_to_file, bands = 1:4)
@@ -113,7 +113,7 @@ hs_extract_pts <- function(filename, pts, bands) {
 #' number of x pixels, and number of y pixels. 
 #' 
 #' @examples
-#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonhs')
 #' hs_dims(path_to_file)
 #' 
 #' @export
@@ -135,7 +135,7 @@ hs_dims <- function(filename) {
 #' coordinates of a hyperspectral image
 #' 
 #' @examples
-#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+#' path_to_file <- system.file('extdata', 'ex.h5', package = 'neonhs')
 #' hs_extent(path_to_file)
 #' 
 #' @export

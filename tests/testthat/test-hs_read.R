@@ -1,8 +1,8 @@
-library(neonaop)
+library(neonhs)
 library(raster)
 context('hs_read')
 
-ex_h5 <- system.file('extdata', 'ex.h5', package = 'neonaop')
+ex_h5 <- system.file('extdata', 'ex.h5', package = 'neonhs')
 
 test_that('hs_dims returns the correct dimensions', {
   expect_identical(hs_dims(ex_h5), c(426L, 30L, 30L))

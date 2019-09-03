@@ -1,4 +1,4 @@
-Package: neonaop
+Package: neonhs
 Type: Package
 Title: Work with NEON AOP hyperspectral data
 Version: 0.0.9999
@@ -18,8 +18,8 @@ Description: Work with data from the NEON AOP.
     The National Ecological Observatory Network's (NEON's) Airborne Observation
     Platform (AOP) collects hyperspectral data over NEON's 
     field sites. This package is designed to make these data easier to use. 
-URL: https://github.com/earthlab/neonaop
-BugReports: https://github.com/earthlab/neonaop/issues
+URL: https://github.com/earthlab/neonhs
+BugReports: https://github.com/earthlab/neonhs/issues
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

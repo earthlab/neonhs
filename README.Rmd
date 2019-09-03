@@ -13,25 +13,23 @@ knitr::opts_chunk$set(
 )
 ```
 
-# neonaop
+# neonhs
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Build Status](https://travis-ci.org/earthlab/neonaop.svg?branch=master)](https://travis-ci.org/earthlab/neonaop)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/earthlab/neonaop?branch=master&svg=true)](https://ci.appveyor.com/project/earthlab/neonaop)
-[![Coverage status](https://codecov.io/gh/earthlab/neonaop/branch/master/graph/badge.svg)](https://codecov.io/github/earthlab/neonaop?branch=master)
+[![Build Status](https://travis-ci.org/earthlab/neonhs.svg?branch=master)](https://travis-ci.org/earthlab/neonhs)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/earthlab/neonhs?branch=master&svg=true)](https://ci.appveyor.com/project/earthlab/neonhs)
+[![Coverage status](https://codecov.io/gh/earthlab/neonhs/branch/master/graph/badge.svg)](https://codecov.io/github/earthlab/neonhs?branch=master)
 
-The goal of neonaop is to make data from the NEON AOP easier to use. 
-The National Ecological Observatory Network (NEON) collects hyperspectral 
-imagery via its Airborne Observation Platform (AOP) at a 1 meter spatial 
-resolution for 426 different wavelengths. 
+The goal of neonhs is to make data from the National Ecological Observatory Network (NEON) Airborne Observation Platform (AOP) hyperspectral instrument easier to use. 
+The NEON AOP collects hyperspectral imagery via its  at a 1 meter spatial resolution for 426 different wavelengths. 
 
 ## Installation
 
-You can install the development version of neonaop via:
+You can install the development version of neonhs via:
 
 ```r
 #install.packages('devtools')
-devtools::install_github('earthlab/neonaop')
+devtools::install_github('earthlab/neonhs')
 ```
 
 ## Examples
@@ -42,13 +40,13 @@ This is a basic example which shows you how to read some bands from
 L3 hyperspectral reflectance data as a multi-layer raster:
 
 ```{r example, message=FALSE}
-library(neonaop)
+library(neonhs)
 library(raster)
 library(viridis)
 library(sp)
 library(tidyverse)
 
-path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+path_to_file <- system.file('extdata', 'ex.h5', package = 'neonhs')
 r <- hs_read(path_to_file, bands = c(1, 50, 100, 400))
 r
 ```

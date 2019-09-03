@@ -1,4 +1,4 @@
 library(testthat)
-library(neonaop)
+library(neonhs)
 
-test_check("neonaop")
+test_check("neonhs")

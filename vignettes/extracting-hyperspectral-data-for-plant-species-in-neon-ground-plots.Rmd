@@ -22,19 +22,22 @@ knitr::opts_chunk$set(purl = NOT_CRAN,
                       eval = NOT_CRAN)
 ```
 
-This vignette shows how the neonaop package can be combined with the 
+This vignette shows how the neonhs package can be combined with the 
 [neonUtilities](https://github.com/NEONScience/NEON-utilities/) and 
 [geoNEON](https://github.com/NEONScience/NEON-geolocation) packages to 
 programmatically access woody vegetation 
 data from NEON ground plots, and extract spectra from hyperspectral imagery. 
 
 ```{r load-libraries, message=FALSE}
+library(neonhs)
 library(raster)
 library(neonUtilities)
-library(geoNEON)
-library(neonaop)
 library(sp)
 library(tidyverse)
+
+# remotes::install_github('NEONScience/NEON-geolocation/geoNEON', dependencies=TRUE)
+library(geoNEON)
+
 ```
 
 First, we need to download vegetation data (data acquisition steps
@@ -107,7 +110,7 @@ for (e in extents) {
 
 Each mapped plant location is covered by an extent object for a 
 hyperspectral image. 
-We can use the `neonaop` package to extract hyperspectral data at these 
+We can use the `neonhs` package to extract hyperspectral data at these 
 locations. 
 
 ```{r extract-hs-data}
