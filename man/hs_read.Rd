@@ -26,7 +26,7 @@ https://www.neonscience.org/data-collection/airborne-remote-sensing
 }
 \examples{
 library(raster)
-path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+path_to_file <- system.file('extdata', 'ex.h5', package = 'neonhs')
 
 # read the full spatial extent of a file
 r <- hs_read(path_to_file, bands = 1:4)

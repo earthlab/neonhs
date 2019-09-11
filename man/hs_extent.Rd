@@ -17,7 +17,7 @@ coordinates of a hyperspectral image
 Get the spatial extent of a hyperspectral image
 }
 \examples{
-path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+path_to_file <- system.file('extdata', 'ex.h5', package = 'neonhs')
 hs_extent(path_to_file)
 
 }

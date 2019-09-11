@@ -20,7 +20,7 @@ In most cases, these dimensions will be 426 X 1000 X 1000: 426 bands and
 images that are 1000m by 1000m in their spatial extent at 1 meter resolution.
 }
 \examples{
-path_to_file <- system.file('extdata', 'ex.h5', package = 'neonaop')
+path_to_file <- system.file('extdata', 'ex.h5', package = 'neonhs')
 hs_dims(path_to_file)
 
 }
