@@ -5,10 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Extracting hyperspectral data for plant species in NEON ground plots • neonaop</title>
+<title>Extracting hyperspectral data for plant species in NEON ground plots • neonhs</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Extracting hyperspectral data for plant species in NEON ground plots">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -29,7 +30,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">neonaop</a>
+        <a class="navbar-link" href="../index.html">neonhs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.9999</span>
       </span>
     </div>
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -60,8 +61,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/earthlab/neonaop">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/earthlab/neonhs">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -74,159 +75,171 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Extracting hyperspectral data for plant species in NEON ground plots</h1>
                         <h4 class="author">Maxwell B. Joseph</h4>
             
-            <h4 class="date">2019-02-28</h4>
+            <h4 class="date">2019-09-16</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/earthlab/neonaop/blob/master/vignettes/extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd"><code>vignettes/extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/earthlab/neonhs/blob/master/vignettes/extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd"><code>vignettes/extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd</code></a></small>
       <div class="hidden name"><code>extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.Rmd</code></div>
 
     </div>
 
     
     
-<p>This vignette shows how the neonaop package can be combined with the <a href="https://github.com/NEONScience/NEON-utilities/">neonUtilities</a> and <a href="https://github.com/NEONScience/NEON-geolocation">geoNEON</a> packages to programmatically access woody vegetation data from NEON ground plots, and extract spectra from hyperspectral imagery.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(raster)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(neonUtilities)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(geoNEON)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(neonaop)</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sp)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a></code></pre></div>
+<p>This vignette shows how the neonhs package can be combined with the <a href="https://github.com/NEONScience/NEON-utilities/">neonUtilities</a> and <a href="https://github.com/NEONScience/NEON-geolocation">geoNEON</a> packages to programmatically access woody vegetation data from NEON ground plots, and extract spectra from hyperspectral imagery.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(neonhs)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(raster)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(neonUtilities)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sp)</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co"># remotes::install_github('NEONScience/NEON-geolocation/geoNEON', dependencies=TRUE)</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(geoNEON)</a></code></pre></div>
 <p>First, we need to download vegetation data (data acquisition steps below are adapted from the documentation in the neonUtilities and geoNEON packages):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/neonUtilities/topics/zipsByProduct">zipsByProduct</a></span>(<span class="dt">dpID =</span> <span class="st">"DP1.10098.001"</span>, </a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/pkg/neonUtilities/man/zipsByProduct.html">zipsByProduct</a></span>(<span class="dt">dpID =</span> <span class="st">"DP1.10098.001"</span>, </a>
 <a class="sourceLine" id="cb2-2" title="2">              <span class="dt">site =</span> <span class="st">"TALL"</span>, </a>
 <a class="sourceLine" id="cb2-3" title="3">              <span class="dt">savepath =</span> <span class="st">"."</span>, </a>
 <a class="sourceLine" id="cb2-4" title="4">              <span class="dt">check.size =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/neonUtilities/topics/stackByTable">stackByTable</a></span>(<span class="st">"filesToStack10098"</span>, <span class="dt">folder =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw"><a href="https://rdrr.io/pkg/neonUtilities/man/stackByTable.html">stackByTable</a></span>(<span class="st">"filesToStack10098"</span>, <span class="dt">folder =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Then, we can read the mapping data and apparent individual data. We will restrict our focus to one year’s worth of data, to simplify the process of matching ground plot data in one year to the same year’s imagery.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">vegmap &lt;-<span class="st"> "filesToStack10098/stackedFiles/vst_mappingandtagging.csv"</span> <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span>read_csv <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/substr">substr</a></span>(date, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(year <span class="op">==</span><span class="st"> '2017'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/geoNEON/topics/def.calc.geo.os">def.calc.geo.os</a></span>(<span class="st">"vst_mappingandtagging"</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw"><a href="https://rdrr.io/r/base/substr.html">substr</a></span>(date, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> '2017'</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/geoNEON/man/def.calc.geo.os.html">def.calc.geo.os</a></span>(<span class="st">"vst_mappingandtagging"</span>)</a>
 <a class="sourceLine" id="cb3-6" title="6"></a>
 <a class="sourceLine" id="cb3-7" title="7">vegind &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"filesToStack10098/stackedFiles/vst_apparentindividual.csv"</span>)</a></code></pre></div>
 <p>Merge mapping and individual data, and filter to live plants with coordinates:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">veg &lt;-<span class="st"> </span><span class="kw">right_join</span>(vegind, vegmap, </a>
-<a class="sourceLine" id="cb4-2" title="2">             <span class="dt">by =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"individualID"</span>, <span class="st">"namedLocation"</span>,</a>
+<a class="sourceLine" id="cb4-2" title="2">             <span class="dt">by =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"individualID"</span>, <span class="st">"namedLocation"</span>,</a>
 <a class="sourceLine" id="cb4-3" title="3">                    <span class="st">"domainID"</span>, <span class="st">"siteID"</span>, <span class="st">"plotID"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(adjEasting), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(adjNorthing), plantStatus <span class="op">==</span><span class="st"> "Live"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb4-4" title="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(adjEasting), <span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(adjNorthing), plantStatus <span class="op">==</span><span class="st"> "Live"</span>)</a></code></pre></div>
 <p>Using this spatial data, we can acquire tiles of hyperspectral data that intersect the plants that were mapped on the ground.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/neonUtilities/topics/byTileAOP">byTileAOP</a></span>(<span class="dt">dpID =</span> <span class="st">"DP3.30006.001"</span>, <span class="dt">site =</span> <span class="st">"TALL"</span>, <span class="dt">year =</span> <span class="st">"2017"</span>, </a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/pkg/neonUtilities/man/byTileAOP.html">byTileAOP</a></span>(<span class="dt">dpID =</span> <span class="st">"DP3.30006.001"</span>, <span class="dt">site =</span> <span class="st">"TALL"</span>, <span class="dt">year =</span> <span class="st">"2017"</span>, </a>
 <a class="sourceLine" id="cb5-2" title="2">          <span class="dt">easting =</span> veg<span class="op">$</span>adjEasting, <span class="dt">northing =</span> veg<span class="op">$</span>adjNorthing, </a>
 <a class="sourceLine" id="cb5-3" title="3">          <span class="dt">check.size =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb5-4" title="4">hs_paths &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list.files">list.files</a></span>(<span class="dt">path=</span><span class="st">'.'</span>, <span class="dt">pattern =</span> <span class="st">'reflectance.h5'</span>, </a>
+<a class="sourceLine" id="cb5-4" title="4">hs_paths &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="dt">path=</span><span class="st">'.'</span>, <span class="dt">pattern =</span> <span class="st">'reflectance.h5'</span>, </a>
 <a class="sourceLine" id="cb5-5" title="5">                       <span class="dt">recursive =</span> <span class="ot">TRUE</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Now, create a SpatialPointsDataFrame of these points.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">spdf &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/sp/topics/SpatialPoints">SpatialPointsDataFrame</a></span>(veg[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'adjEasting'</span>, <span class="st">'adjNorthing'</span>)], </a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">spdf &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/sp/man/SpatialPoints.html">SpatialPointsDataFrame</a></span>(veg[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'adjEasting'</span>, <span class="st">'adjNorthing'</span>)], </a>
 <a class="sourceLine" id="cb6-2" title="2">                               <span class="dt">data =</span> veg, </a>
-<a class="sourceLine" id="cb6-3" title="3">                               <span class="dt">proj4string =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/sp/topics/CRS-class">CRS</a></span>(<span class="kw"><a href="../reference/hs_proj4string.html">hs_proj4string</a></span>(hs_paths[<span class="dv">1</span>])))</a></code></pre></div>
+<a class="sourceLine" id="cb6-3" title="3">                               <span class="dt">proj4string =</span> <span class="kw"><a href="https://rdrr.io/pkg/sp/man/CRS-class.html">CRS</a></span>(<span class="kw"><a href="../reference/hs_proj4string.html">hs_proj4string</a></span>(hs_paths[<span class="dv">1</span>])))</a></code></pre></div>
 <p>Now, let’s visualize the extents of these hyperspectral images and the locations of the mapped plants:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">extents &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(hs_paths, hs_extent)</a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">extents &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(hs_paths, hs_extent)</a>
 <a class="sourceLine" id="cb7-2" title="2"></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(raster<span class="op">::</span>merge, extents), <span class="dt">bty =</span> <span class="st">'n'</span>, </a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span>(raster<span class="op">::</span>merge, extents), <span class="dt">bty =</span> <span class="st">'n'</span>, </a>
 <a class="sourceLine" id="cb7-4" title="4">     <span class="dt">xlab =</span> <span class="st">'Easting'</span>, <span class="dt">ylab =</span> <span class="st">'Northing'</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(spdf, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="kw"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(spdf, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb7-6" title="6"><span class="cf">for</span> (e <span class="cf">in</span> extents) {</a>
-<a class="sourceLine" id="cb7-7" title="7">  <span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(e, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="kw"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(e, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb7-8" title="8">}</a></code></pre></div>
 <p><img src="extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots_files/figure-html/plot-locations-and-extents-1.png" width="576"></p>
-<p>Each mapped plant location is covered by an extent object for a hyperspectral image. We can use the <code>neonaop</code> package to extract hyperspectral data at these locations.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">out &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>()</a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(hs_paths)) {</a>
+<p>Each mapped plant location is covered by an extent object for a hyperspectral image. We can use the <code>neonhs</code> package to extract hyperspectral data at these locations.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">out &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>()</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(hs_paths)) {</a>
 <a class="sourceLine" id="cb8-3" title="3">  res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/hs_extract_pts.html">hs_extract_pts</a></span>(hs_paths[i], <span class="dt">pts =</span> spdf, <span class="dt">bands =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">426</span>)</a>
-<a class="sourceLine" id="cb8-4" title="4">  first_band &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grep</a></span>(<span class="st">'^band1'</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/names">names</a></span>(res), <span class="dt">value =</span> <span class="ot">TRUE</span>)[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb8-5" title="5">  na_vals &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(res[[first_band]])</a>
+<a class="sourceLine" id="cb8-4" title="4">  first_band &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">'^band1'</span>, <span class="kw"><a href="https://rdrr.io/pkg/raster/man/names.html">names</a></span>(res), <span class="dt">value =</span> <span class="ot">TRUE</span>)[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb8-5" title="5">  na_vals &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(res[[first_band]])</a>
 <a class="sourceLine" id="cb8-6" title="6">  out[[i]] &lt;-<span class="st"> </span>res[<span class="op">!</span>na_vals, ]</a>
 <a class="sourceLine" id="cb8-7" title="7">}</a></code></pre></div>
 <p>Now let’s create a tibble for easy plotting:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">hs_df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(out, as.data.frame) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">hs_df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(out, as.data.frame) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span>bind_rows <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span>as_tibble <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/select">select</a></span>(uid.x, adjEasting, adjNorthing, plantStatus, scientificName, </a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/raster/man/select.html">select</a></span>(uid.x, adjEasting, adjNorthing, plantStatus, scientificName, </a>
 <a class="sourceLine" id="cb9-5" title="5">         <span class="kw">starts_with</span>(<span class="st">'band'</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(plantStatus <span class="op">==</span><span class="st"> 'Live'</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(plantStatus <span class="op">==</span><span class="st"> 'Live'</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="st">  </span>distinct</a>
 <a class="sourceLine" id="cb9-8" title="8">hs_df</a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt; # A tibble: 11 x 431</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt; # A tibble: 20 x 431</span></a>
 <a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;    uid.x adjEasting adjNorthing plantStatus scientificName band1_384nm</span></a>
 <a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  1 fa8a…    462671.    3645859. Live        Pinus palustr…      0.0427</span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  2 018e…    462758.    3645667. Live        Cornus florid…      0.0317</span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt;  3 97e7…    462831.    3646134. Live        Pinus echinat…      0.054 </span></a>
-<a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt;  4 237a…    462865.    3646029. Live        Pinus palustr…      0.0574</span></a>
-<a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt;  5 f91d…    462865.    3646029. Live        Pinus palustr…      0.0574</span></a>
-<a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt;  6 e635…    462719.    3646114. Live        Quercus velut…      0.0565</span></a>
-<a class="sourceLine" id="cb9-18" title="18"><span class="co">#&gt;  7 73c2…    462733.    3646108. Live        Cornus florid…      0.0421</span></a>
-<a class="sourceLine" id="cb9-19" title="19"><span class="co">#&gt;  8 f68a…    463029.    3645994. Live        Cornus florid…      0.0606</span></a>
-<a class="sourceLine" id="cb9-20" title="20"><span class="co">#&gt;  9 8d73…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="co">#&gt; 10 f0f3…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
-<a class="sourceLine" id="cb9-22" title="22"><span class="co">#&gt; 11 d9f7…    463037.    3646191. Live        Pinus echinat…      0.0747</span></a>
-<a class="sourceLine" id="cb9-23" title="23"><span class="co">#&gt; # … with 425 more variables: band2_389nm &lt;dbl&gt;, band3_394nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-24" title="24"><span class="co">#&gt; #   band4_399nm &lt;dbl&gt;, band5_404nm &lt;dbl&gt;, band6_409nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-25" title="25"><span class="co">#&gt; #   band7_414nm &lt;dbl&gt;, band8_419nm &lt;dbl&gt;, band9_424nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-26" title="26"><span class="co">#&gt; #   band10_429nm &lt;dbl&gt;, band11_434nm &lt;dbl&gt;, band12_439nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-27" title="27"><span class="co">#&gt; #   band13_444nm &lt;dbl&gt;, band14_449nm &lt;dbl&gt;, band15_454nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-28" title="28"><span class="co">#&gt; #   band16_459nm &lt;dbl&gt;, band17_464nm &lt;dbl&gt;, band18_469nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-29" title="29"><span class="co">#&gt; #   band19_474nm &lt;dbl&gt;, band20_479nm &lt;dbl&gt;, band21_484nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-30" title="30"><span class="co">#&gt; #   band22_489nm &lt;dbl&gt;, band23_494nm &lt;dbl&gt;, band24_499nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-31" title="31"><span class="co">#&gt; #   band25_504nm &lt;dbl&gt;, band26_509nm &lt;dbl&gt;, band27_514nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-32" title="32"><span class="co">#&gt; #   band28_519nm &lt;dbl&gt;, band29_524nm &lt;dbl&gt;, band30_529nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-33" title="33"><span class="co">#&gt; #   band31_534nm &lt;dbl&gt;, band32_539nm &lt;dbl&gt;, band33_544nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-34" title="34"><span class="co">#&gt; #   band34_549nm &lt;dbl&gt;, band35_554nm &lt;dbl&gt;, band36_559nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-35" title="35"><span class="co">#&gt; #   band37_564nm &lt;dbl&gt;, band38_569nm &lt;dbl&gt;, band39_574nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-36" title="36"><span class="co">#&gt; #   band40_579nm &lt;dbl&gt;, band41_584nm &lt;dbl&gt;, band42_589nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-37" title="37"><span class="co">#&gt; #   band43_594nm &lt;dbl&gt;, band44_599nm &lt;dbl&gt;, band45_604nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-38" title="38"><span class="co">#&gt; #   band46_609nm &lt;dbl&gt;, band47_614nm &lt;dbl&gt;, band48_619nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-39" title="39"><span class="co">#&gt; #   band49_624nm &lt;dbl&gt;, band50_629nm &lt;dbl&gt;, band51_634nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-40" title="40"><span class="co">#&gt; #   band52_639nm &lt;dbl&gt;, band53_644nm &lt;dbl&gt;, band54_649nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-41" title="41"><span class="co">#&gt; #   band55_654nm &lt;dbl&gt;, band56_659nm &lt;dbl&gt;, band57_664nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-42" title="42"><span class="co">#&gt; #   band58_669nm &lt;dbl&gt;, band59_674nm &lt;dbl&gt;, band60_679nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-43" title="43"><span class="co">#&gt; #   band61_684nm &lt;dbl&gt;, band62_689nm &lt;dbl&gt;, band63_694nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-44" title="44"><span class="co">#&gt; #   band64_699nm &lt;dbl&gt;, band65_704nm &lt;dbl&gt;, band66_709nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-45" title="45"><span class="co">#&gt; #   band67_714nm &lt;dbl&gt;, band68_719nm &lt;dbl&gt;, band69_724nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-46" title="46"><span class="co">#&gt; #   band70_729nm &lt;dbl&gt;, band71_734nm &lt;dbl&gt;, band72_739nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-47" title="47"><span class="co">#&gt; #   band73_744nm &lt;dbl&gt;, band74_749nm &lt;dbl&gt;, band75_754nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-48" title="48"><span class="co">#&gt; #   band76_759nm &lt;dbl&gt;, band77_764nm &lt;dbl&gt;, band78_769nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-49" title="49"><span class="co">#&gt; #   band79_774nm &lt;dbl&gt;, band80_779nm &lt;dbl&gt;, band81_784nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-50" title="50"><span class="co">#&gt; #   band82_789nm &lt;dbl&gt;, band83_794nm &lt;dbl&gt;, band84_799nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-51" title="51"><span class="co">#&gt; #   band85_804nm &lt;dbl&gt;, band86_809nm &lt;dbl&gt;, band87_814nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-52" title="52"><span class="co">#&gt; #   band88_819nm &lt;dbl&gt;, band89_824nm &lt;dbl&gt;, band90_829nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-53" title="53"><span class="co">#&gt; #   band91_834nm &lt;dbl&gt;, band92_839nm &lt;dbl&gt;, band93_844nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-54" title="54"><span class="co">#&gt; #   band94_849nm &lt;dbl&gt;, band95_854nm &lt;dbl&gt;, band96_859nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-55" title="55"><span class="co">#&gt; #   band97_864nm &lt;dbl&gt;, band98_869nm &lt;dbl&gt;, band99_874nm &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-56" title="56"><span class="co">#&gt; #   band100_879nm &lt;dbl&gt;, band101_884nm &lt;dbl&gt;, …</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  1 f1a5…    462671.    3645859. Live        Pinus palustr…      0.0427</span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  2 b3d2…    462671.    3645859. Live        Pinus palustr…      0.0427</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt;  3 d286…    462758.    3645667. Live        Cornus florid…      0.0317</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt;  4 1193…    462758.    3645667. Live        Cornus florid…      0.0317</span></a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt;  5 7b27…    462831.    3646134. Live        Pinus echinat…      0.054 </span></a>
+<a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt;  6 6836…    462831.    3646134. Live        Pinus echinat…      0.054 </span></a>
+<a class="sourceLine" id="cb9-18" title="18"><span class="co">#&gt;  7 1dd0…    462865.    3646029. Live        Pinus palustr…      0.0574</span></a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="co">#&gt;  8 3f01…    462865.    3646029. Live        Pinus palustr…      0.0574</span></a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="co">#&gt;  9 f186…    462865.    3646029. Live        Pinus palustr…      0.0574</span></a>
+<a class="sourceLine" id="cb9-21" title="21"><span class="co">#&gt; 10 c011…    462719.    3646114. Live        Quercus velut…      0.0565</span></a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="co">#&gt; 11 b082…    462719.    3646114. Live        Quercus velut…      0.0565</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="co">#&gt; 12 3b66…    462733.    3646108. Live        Cornus florid…      0.0421</span></a>
+<a class="sourceLine" id="cb9-24" title="24"><span class="co">#&gt; 13 2afd…    462733.    3646108. Live        Cornus florid…      0.0421</span></a>
+<a class="sourceLine" id="cb9-25" title="25"><span class="co">#&gt; 14 559e…    463029.    3645994. Live        Cornus florid…      0.0606</span></a>
+<a class="sourceLine" id="cb9-26" title="26"><span class="co">#&gt; 15 aa1b…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
+<a class="sourceLine" id="cb9-27" title="27"><span class="co">#&gt; 16 4c43…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
+<a class="sourceLine" id="cb9-28" title="28"><span class="co">#&gt; 17 1e30…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
+<a class="sourceLine" id="cb9-29" title="29"><span class="co">#&gt; 18 fe7d…    463033.    3646187. Live        Cornus florid…      0.046 </span></a>
+<a class="sourceLine" id="cb9-30" title="30"><span class="co">#&gt; 19 2101…    463037.    3646191. Live        Pinus echinat…      0.0747</span></a>
+<a class="sourceLine" id="cb9-31" title="31"><span class="co">#&gt; 20 7ed2…    463037.    3646191. Live        Pinus echinat…      0.0747</span></a>
+<a class="sourceLine" id="cb9-32" title="32"><span class="co">#&gt; # … with 425 more variables: band2_389nm &lt;dbl&gt;, band3_394nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-33" title="33"><span class="co">#&gt; #   band4_399nm &lt;dbl&gt;, band5_404nm &lt;dbl&gt;, band6_409nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-34" title="34"><span class="co">#&gt; #   band7_414nm &lt;dbl&gt;, band8_419nm &lt;dbl&gt;, band9_424nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-35" title="35"><span class="co">#&gt; #   band10_429nm &lt;dbl&gt;, band11_434nm &lt;dbl&gt;, band12_439nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-36" title="36"><span class="co">#&gt; #   band13_444nm &lt;dbl&gt;, band14_449nm &lt;dbl&gt;, band15_454nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-37" title="37"><span class="co">#&gt; #   band16_459nm &lt;dbl&gt;, band17_464nm &lt;dbl&gt;, band18_469nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-38" title="38"><span class="co">#&gt; #   band19_474nm &lt;dbl&gt;, band20_479nm &lt;dbl&gt;, band21_484nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-39" title="39"><span class="co">#&gt; #   band22_489nm &lt;dbl&gt;, band23_494nm &lt;dbl&gt;, band24_499nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-40" title="40"><span class="co">#&gt; #   band25_504nm &lt;dbl&gt;, band26_509nm &lt;dbl&gt;, band27_514nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-41" title="41"><span class="co">#&gt; #   band28_519nm &lt;dbl&gt;, band29_524nm &lt;dbl&gt;, band30_529nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-42" title="42"><span class="co">#&gt; #   band31_534nm &lt;dbl&gt;, band32_539nm &lt;dbl&gt;, band33_544nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-43" title="43"><span class="co">#&gt; #   band34_549nm &lt;dbl&gt;, band35_554nm &lt;dbl&gt;, band36_559nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-44" title="44"><span class="co">#&gt; #   band37_564nm &lt;dbl&gt;, band38_569nm &lt;dbl&gt;, band39_574nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-45" title="45"><span class="co">#&gt; #   band40_579nm &lt;dbl&gt;, band41_584nm &lt;dbl&gt;, band42_589nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-46" title="46"><span class="co">#&gt; #   band43_594nm &lt;dbl&gt;, band44_599nm &lt;dbl&gt;, band45_604nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-47" title="47"><span class="co">#&gt; #   band46_609nm &lt;dbl&gt;, band47_614nm &lt;dbl&gt;, band48_619nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-48" title="48"><span class="co">#&gt; #   band49_624nm &lt;dbl&gt;, band50_629nm &lt;dbl&gt;, band51_634nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-49" title="49"><span class="co">#&gt; #   band52_639nm &lt;dbl&gt;, band53_644nm &lt;dbl&gt;, band54_649nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-50" title="50"><span class="co">#&gt; #   band55_654nm &lt;dbl&gt;, band56_659nm &lt;dbl&gt;, band57_664nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-51" title="51"><span class="co">#&gt; #   band58_669nm &lt;dbl&gt;, band59_674nm &lt;dbl&gt;, band60_679nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-52" title="52"><span class="co">#&gt; #   band61_684nm &lt;dbl&gt;, band62_689nm &lt;dbl&gt;, band63_694nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-53" title="53"><span class="co">#&gt; #   band64_699nm &lt;dbl&gt;, band65_704nm &lt;dbl&gt;, band66_709nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-54" title="54"><span class="co">#&gt; #   band67_714nm &lt;dbl&gt;, band68_719nm &lt;dbl&gt;, band69_724nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-55" title="55"><span class="co">#&gt; #   band70_729nm &lt;dbl&gt;, band71_734nm &lt;dbl&gt;, band72_739nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-56" title="56"><span class="co">#&gt; #   band73_744nm &lt;dbl&gt;, band74_749nm &lt;dbl&gt;, band75_754nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-57" title="57"><span class="co">#&gt; #   band76_759nm &lt;dbl&gt;, band77_764nm &lt;dbl&gt;, band78_769nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-58" title="58"><span class="co">#&gt; #   band79_774nm &lt;dbl&gt;, band80_779nm &lt;dbl&gt;, band81_784nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-59" title="59"><span class="co">#&gt; #   band82_789nm &lt;dbl&gt;, band83_794nm &lt;dbl&gt;, band84_799nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-60" title="60"><span class="co">#&gt; #   band85_804nm &lt;dbl&gt;, band86_809nm &lt;dbl&gt;, band87_814nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-61" title="61"><span class="co">#&gt; #   band88_819nm &lt;dbl&gt;, band89_824nm &lt;dbl&gt;, band90_829nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-62" title="62"><span class="co">#&gt; #   band91_834nm &lt;dbl&gt;, band92_839nm &lt;dbl&gt;, band93_844nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-63" title="63"><span class="co">#&gt; #   band94_849nm &lt;dbl&gt;, band95_854nm &lt;dbl&gt;, band96_859nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-64" title="64"><span class="co">#&gt; #   band97_864nm &lt;dbl&gt;, band98_869nm &lt;dbl&gt;, band99_874nm &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-65" title="65"><span class="co">#&gt; #   band100_879nm &lt;dbl&gt;, band101_884nm &lt;dbl&gt;, …</span></a></code></pre></div>
 <p>And gather the hyperspectral columns (converting the data from wide to long form).</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">long_df &lt;-<span class="st"> </span>hs_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">gather</span>(band, reflectance, </a>
 <a class="sourceLine" id="cb10-3" title="3">         <span class="op">-</span><span class="kw">starts_with</span>(<span class="st">'adj'</span>), <span class="op">-</span>plantStatus, <span class="op">-</span>scientificName, <span class="op">-</span>uid.x) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw">separate</span>(band, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'index'</span>, <span class="st">'wavelength'</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw">separate</span>(band, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'index'</span>, <span class="st">'wavelength'</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wavelength =</span> <span class="kw">parse_number</span>(wavelength)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="st">  </span><span class="kw">separate</span>(scientificName, <span class="dt">into =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'genus'</span>, <span class="st">'species'</span>), <span class="dt">sep =</span> <span class="st">' '</span>, </a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="st">  </span><span class="kw">separate</span>(scientificName, <span class="dt">into =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'genus'</span>, <span class="st">'species'</span>), <span class="dt">sep =</span> <span class="st">' '</span>, </a>
 <a class="sourceLine" id="cb10-7" title="7">           <span class="dt">extra =</span> <span class="st">'drop'</span>, <span class="dt">remove =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">genusspecies =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(genus, species)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">genusspecies =</span> <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(genus, species)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-9" title="9"><span class="st">  </span><span class="co"># filter water vapor bands out</span></a>
-<a class="sourceLine" id="cb10-10" title="10"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="op">!</span><span class="kw">between</span>(wavelength, <span class="dv">1340</span>, <span class="dv">1445</span>), </a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="op">!</span><span class="kw">between</span>(wavelength, <span class="dv">1340</span>, <span class="dv">1445</span>), </a>
 <a class="sourceLine" id="cb10-11" title="11">         <span class="op">!</span><span class="kw">between</span>(wavelength, <span class="dv">1790</span>, <span class="dv">1955</span>))</a>
 <a class="sourceLine" id="cb10-12" title="12">long_df</a>
-<a class="sourceLine" id="cb10-13" title="13"><span class="co">#&gt; # A tibble: 4,081 x 11</span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="co">#&gt; # A tibble: 7,420 x 11</span></a>
 <a class="sourceLine" id="cb10-14" title="14"><span class="co">#&gt;    uid.x adjEasting adjNorthing plantStatus scientificName genus species</span></a>
 <a class="sourceLine" id="cb10-15" title="15"><span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;  </span></a>
-<a class="sourceLine" id="cb10-16" title="16"><span class="co">#&gt;  1 fa8a…    462671.    3645859. Live        Pinus palustr… Pinus palust…</span></a>
-<a class="sourceLine" id="cb10-17" title="17"><span class="co">#&gt;  2 018e…    462758.    3645667. Live        Cornus florid… Corn… florida</span></a>
-<a class="sourceLine" id="cb10-18" title="18"><span class="co">#&gt;  3 97e7…    462831.    3646134. Live        Pinus echinat… Pinus echina…</span></a>
-<a class="sourceLine" id="cb10-19" title="19"><span class="co">#&gt;  4 237a…    462865.    3646029. Live        Pinus palustr… Pinus palust…</span></a>
-<a class="sourceLine" id="cb10-20" title="20"><span class="co">#&gt;  5 f91d…    462865.    3646029. Live        Pinus palustr… Pinus palust…</span></a>
-<a class="sourceLine" id="cb10-21" title="21"><span class="co">#&gt;  6 e635…    462719.    3646114. Live        Quercus velut… Quer… veluti…</span></a>
-<a class="sourceLine" id="cb10-22" title="22"><span class="co">#&gt;  7 73c2…    462733.    3646108. Live        Cornus florid… Corn… florida</span></a>
-<a class="sourceLine" id="cb10-23" title="23"><span class="co">#&gt;  8 f68a…    463029.    3645994. Live        Cornus florid… Corn… florida</span></a>
-<a class="sourceLine" id="cb10-24" title="24"><span class="co">#&gt;  9 8d73…    463033.    3646187. Live        Cornus florid… Corn… florida</span></a>
-<a class="sourceLine" id="cb10-25" title="25"><span class="co">#&gt; 10 f0f3…    463033.    3646187. Live        Cornus florid… Corn… florida</span></a>
-<a class="sourceLine" id="cb10-26" title="26"><span class="co">#&gt; # … with 4,071 more rows, and 4 more variables: index &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb10-16" title="16"><span class="co">#&gt;  1 f1a5…    462671.    3645859. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-17" title="17"><span class="co">#&gt;  2 b3d2…    462671.    3645859. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-18" title="18"><span class="co">#&gt;  3 d286…    462758.    3645667. Live        Cornus florid… Corn… florida</span></a>
+<a class="sourceLine" id="cb10-19" title="19"><span class="co">#&gt;  4 1193…    462758.    3645667. Live        Cornus florid… Corn… florida</span></a>
+<a class="sourceLine" id="cb10-20" title="20"><span class="co">#&gt;  5 7b27…    462831.    3646134. Live        Pinus echinat… Pinus echina…</span></a>
+<a class="sourceLine" id="cb10-21" title="21"><span class="co">#&gt;  6 6836…    462831.    3646134. Live        Pinus echinat… Pinus echina…</span></a>
+<a class="sourceLine" id="cb10-22" title="22"><span class="co">#&gt;  7 1dd0…    462865.    3646029. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-23" title="23"><span class="co">#&gt;  8 3f01…    462865.    3646029. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-24" title="24"><span class="co">#&gt;  9 f186…    462865.    3646029. Live        Pinus palustr… Pinus palust…</span></a>
+<a class="sourceLine" id="cb10-25" title="25"><span class="co">#&gt; 10 c011…    462719.    3646114. Live        Quercus velut… Quer… veluti…</span></a>
+<a class="sourceLine" id="cb10-26" title="26"><span class="co">#&gt; # … with 7,410 more rows, and 4 more variables: index &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb10-27" title="27"><span class="co">#&gt; #   wavelength &lt;dbl&gt;, reflectance &lt;dbl&gt;, genusspecies &lt;chr&gt;</span></a></code></pre></div>
 <p>Finally, we can plot the signatures for each species:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">long_df <span class="op">%&gt;%</span></a>
@@ -240,9 +253,11 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
       </div>
 
 </div>
+
 
 
       <footer><div class="copyright">
@@ -250,12 +265,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

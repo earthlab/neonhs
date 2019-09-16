@@ -1,5 +1,5 @@
 pandoc: '2.5'
-pkgdown: 1.3.0
+pkgdown: 1.4.0
 pkgdown_sha: ~
 articles:
   extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots: extracting-hyperspectral-data-for-plant-species-in-neon-ground-plots.html
