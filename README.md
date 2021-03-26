@@ -11,6 +11,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 status](https://ci.appveyor.com/api/projects/status/github/earthlab/neonhs?branch=master&svg=true)](https://ci.appveyor.com/project/earthlab/neonhs)
 [![Coverage
 status](https://codecov.io/gh/earthlab/neonhs/branch/master/graph/badge.svg)](https://codecov.io/github/earthlab/neonhs?branch=master)
+[![DOI](https://zenodo.org/badge/168047013.svg)](https://zenodo.org/badge/latestdoi/168047013)
 
 The goal of neonhs is to make data from the National Ecological
 Observatory Network (NEON) Airborne Observation Platform (AOP)

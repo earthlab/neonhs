@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/earthlab/neonhs/workflows/R-CMD-check/badge.svg)](https://github.com/earthlab/neonhs/actions)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/earthlab/neonhs?branch=master&svg=true)](https://ci.appveyor.com/project/earthlab/neonhs)
 [![Coverage status](https://codecov.io/gh/earthlab/neonhs/branch/master/graph/badge.svg)](https://codecov.io/github/earthlab/neonhs?branch=master)
+[![DOI](https://zenodo.org/badge/168047013.svg)](https://zenodo.org/badge/latestdoi/168047013)
 
 The goal of neonhs is to make data from the National Ecological Observatory Network (NEON) Airborne Observation Platform (AOP) hyperspectral instrument easier to use. 
 The NEON AOP collects hyperspectral imagery via its  at a 1 meter spatial resolution for 426 different wavelengths. 
