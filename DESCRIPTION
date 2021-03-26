@@ -36,6 +36,8 @@ Suggests:
     knitr,
     rmarkdown,
     viridis
+Remotes:  
+    NEONScience/NEON-geolocation/geoNEON
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
