@@ -6,8 +6,7 @@
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Build
-Status](https://travis-ci.org/earthlab/neonhs.svg?branch=master)](https://travis-ci.org/earthlab/neonhs)
+[![R-CMD-check](https://github.com/earthlab/neonhs/workflows/R-CMD-check/badge.svg)](https://github.com/earthlab/neonhs/actions)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/earthlab/neonhs?branch=master&svg=true)](https://ci.appveyor.com/project/earthlab/neonhs)
 [![Coverage
@@ -49,7 +48,7 @@ r
 #> dimensions : 30, 30, 900, 4  (nrow, ncol, ncell, nlayers)
 #> resolution : 1, 1  (x, y)
 #> extent     : 257000, 257030, 4111970, 4112000  (xmin, xmax, ymin, ymax)
-#> crs        : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+#> crs        : +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs 
 #> source     : memory
 #> names      : band1_384nm, band50_629nm, band100_879nm, band400_2382nm 
 #> min values :      0.0198,       0.0073,        0.0620,         0.0051 
@@ -93,7 +92,7 @@ vals
 #> class       : SpatialPointsDataFrame 
 #> features    : 2 
 #> extent      : 257011, 257025, 4111982, 4111991  (xmin, xmax, ymin, ymax)
-#> crs         : +init=epsg:32611 +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+#> crs         : +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs 
 #> variables   : 429
 #> names       : id, band1_384nm, band2_389nm, band3_394nm, band4_399nm, band5_404nm, band6_409nm, band7_414nm, band8_419nm, band9_424nm, band10_429nm, band11_434nm, band12_439nm, band13_444nm, band14_449nm, ... 
 #> min values  :  1,      0.0889,      0.0734,      0.0574,      0.0579,      0.0528,       0.054,       0.058,      0.0563,      0.0595,        0.062,       0.0618,       0.0637,       0.0642,       0.0637, ... 

@@ -11,3 +11,4 @@ DP3*
 filesToStack*
 vignettes/DP3*
 vignettes/filesToStack*
+^\.github$
